@@ -15,15 +15,11 @@ public static void main(String[] args) {
  
         session.beginTransaction();
 
-
-      
-     
-
-        Query q = session.createQuery("From Pessoa ");
+        Query q = session.createQuery("From Multa where id = 8");
                 
-        List<Pessoa> resultList = q.list();
+        List<Multa> resultList = q.list();
         System.out.println("num of employess:" + resultList.size());
-        for (Pessoa next : resultList) {
+        for (Multa next : resultList) {
             System.out.println("next employee: " + next);
         }
 

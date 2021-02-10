@@ -1,10 +1,32 @@
 package br.com.ufpr.dac.persistence;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "usuario")
 public class Usuario {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	@Column(name ="login")
 	private String login;
+	@Column(name ="senha")
 	private String senha;
-	private int tipoperfil;
+	
+	@ManyToOne()
+	@JoinColumn(name = "tipoperfil")
+	private Perfil perfil;
+	
+	@OneToOne(mappedBy = "usuario")
+	private Pessoa pessoa;
 	
 	public Usuario() {}
 	
@@ -26,11 +48,20 @@ public class Usuario {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-	public int getTipoperfil() {
-		return tipoperfil;
+
+	public Perfil getPerfil() {
+		return perfil;
 	}
-	public void setTipoperfil(int tipoperfil) {
-		this.tipoperfil = tipoperfil;
+	public void setPerfil(Perfil perfil) {
+		this.perfil = perfil;
+	}
+
+	public Pessoa getPessoa() {
+		return pessoa;
+	}
+
+	public void setPessoa(Pessoa pessoa) {
+		this.pessoa = pessoa;
 	}
 	
 }

@@ -2,12 +2,32 @@ package br.com.ufpr.dac.persistence;
 
 import java.sql.Timestamp;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+
+@Entity
+@Table(name = "pagamento")
 public class Pagamento {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	@Column(name = "datapagamento")
 	private Timestamp datapagamento;
+	@Column(name = "atrasodias")
 	private int atrasodias;
+	@Column(name = "valor")
 	private float valor;
-	private int idmulta;
+	
+	@OneToOne
+	@JoinColumn(name = "idmulta")
+	private Multa multa;
 	
 	public Pagamento() {}
 
@@ -43,14 +63,13 @@ public class Pagamento {
 		this.valor = valor;
 	}
 
-	public int getIdmulta() {
-		return idmulta;
+	public Multa getMulta() {
+		return multa;
 	}
 
-	public void setIdmulta(int idmulta) {
-		this.idmulta = idmulta;
+	public void setMulta(Multa multa) {
+		this.multa = multa;
 	}
-	
-	
+
 	
 }

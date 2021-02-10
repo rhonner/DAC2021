@@ -8,7 +8,15 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.cfg.Environment;
 import org.hibernate.service.ServiceRegistry;
 
+import br.com.ufpr.dac.persistence.Infracao;
+import br.com.ufpr.dac.persistence.Multa;
+import br.com.ufpr.dac.persistence.Pagamento;
+import br.com.ufpr.dac.persistence.Perfil;
+import br.com.ufpr.dac.persistence.Permissao;
 import br.com.ufpr.dac.persistence.Pessoa;
+import br.com.ufpr.dac.persistence.PontuacaoVeiculo;
+import br.com.ufpr.dac.persistence.TipoInfracao;
+import br.com.ufpr.dac.persistence.Usuario;
  
 public class HibernateUtil {
 	private static SessionFactory sessionFactory;
@@ -28,7 +36,15 @@ public class HibernateUtil {
 				
 				configuration.setProperties(settings);
 				configuration.addAnnotatedClass(Pessoa.class);
-				
+				configuration.addAnnotatedClass(Usuario.class);
+				configuration.addAnnotatedClass(Infracao.class);
+				configuration.addAnnotatedClass(Multa.class);
+				configuration.addAnnotatedClass(Pagamento.class);
+				configuration.addAnnotatedClass(Perfil.class);
+				configuration.addAnnotatedClass(Permissao.class);
+				configuration.addAnnotatedClass(PontuacaoVeiculo.class);
+				configuration.addAnnotatedClass(TipoInfracao.class);
+
 				ServiceRegistry serviceRegistry = 
 						new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
 				

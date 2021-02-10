@@ -2,13 +2,39 @@ package br.com.ufpr.dac.persistence;
 
 import java.sql.Timestamp;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+
+@Entity
+@Table(name = "multa")
 public class Multa {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	@Column(name = "renavam")
 	private String renavam;
-	private String document;
+	@Column(name = "documento")
+	private String documento;
+	@Column(name = "datamulta")
 	private Timestamp datamulta;
+	@Column(name = "descricao")
 	private String descricao;
-	private int idinfracao;
+	
+	@ManyToOne
+	@JoinColumn(name = "idinfracao")
+	private Infracao infracao;
+	
+	@OneToOne(mappedBy = "multa",cascade = CascadeType.ALL)
+	private Pagamento pagamento;
 	
 	public Multa() {}
 
@@ -28,12 +54,12 @@ public class Multa {
 		this.renavam = renavam;
 	}
 
-	public String getDocument() {
-		return document;
+	public String getDocumento() {
+		return documento;
 	}
 
-	public void setDocument(String document) {
-		this.document = document;
+	public void setDocumento(String documento) {
+		this.documento = documento;
 	}
 
 	public Timestamp getDatamulta() {
@@ -52,14 +78,13 @@ public class Multa {
 		this.descricao = descricao;
 	}
 
-	public int getIdinfracao() {
-		return idinfracao;
+	public Infracao getInfracao() {
+		return infracao;
 	}
 
-	public void setIdinfracao(int idinfracao) {
-		this.idinfracao = idinfracao;
+	public void setInfracao(Infracao infracao) {
+		this.infracao = infracao;
 	}
-	
-	
+
 	
 }
