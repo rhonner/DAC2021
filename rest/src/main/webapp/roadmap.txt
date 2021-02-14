@@ -1,6 +1,0 @@
-V0.0.0.2
-- javax, pgsql, hibernate adicionados como dependencia
-- Feito linkagem hibernate com pgsql
-
-V0.0.0.3
-- Mapeamento Hibernate funcional finalizado em todas as classes com excecao da PontuacaoVeiculo
