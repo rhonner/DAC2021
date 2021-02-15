@@ -4,3 +4,7 @@ V0.0.0.2
 
 V0.0.0.3
 - Mapeamento Hibernate funcional finalizado em todas as classes com excecao da PontuacaoVeiculo
+
+V0.0.0.4
+- Dao generico criado
+- Daos individuais criados

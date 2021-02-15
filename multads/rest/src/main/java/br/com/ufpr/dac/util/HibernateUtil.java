@@ -2,6 +2,7 @@ package br.com.ufpr.dac.util;
 
 import java.util.Properties;
 
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
@@ -27,7 +28,7 @@ public class HibernateUtil {
 				Configuration configuration = new Configuration();
 				Properties settings = new Properties();
 				settings.put(Environment.DRIVER, "org.postgresql.Driver");
-				settings.put(Environment.URL,"jdbc:postgresql://localhost:5432/DACMULTADS");
+				settings.put(Environment.URL,"jdbc:postgresql://localhost:5433/DACMULTADS");
 				settings.put(Environment.USER, "postgres");
 				settings.put(Environment.PASS, "admin");
 				settings.put(Environment.DIALECT, "org.hibernate.dialect.PostgreSQLDialect");
@@ -61,6 +62,11 @@ public class HibernateUtil {
 		
 		
 	}
+	
+	public static Session getSession()
+    {
+        return getSessionFactory().openSession();
+    }
 	
 	
 }
