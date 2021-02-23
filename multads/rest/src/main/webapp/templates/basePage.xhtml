@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+	<title>MULTADS</title>
+
+	<!-- Favicon -->
+	<link rel="icon" href="images/marquinhos.png" type="image/png" />
+
+	<!-- material google icon cdn -->
+	<link rel="stylesheet"
+		href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+	<!-- Bootstrap CSS CDN -->
+
+	<link rel="stylesheet"
+		href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+		integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
+		crossorigin="anonymous" />
+	<!-- Our Custom CSS -->
+	<link rel="stylesheet" href="css/style.css" />
+
+	<!-- Font Awesome JS -->
+	<script src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"></script>
+	<script
+		src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js"></script>
+
+	<!-- Created Scripts -->
+	<script type="text/javascript" src="./js/utils.js"></script>
+
+</h:head>
+<body>
+
+
+	<div id="firebaseui-auth-container"></div>
+	<div id="setor7-app-container" class="wrapper">
+
+		<ui:insert name="pageSideBar">
+		</ui:insert>
+
+		<!-- Page Content  -->
+		<div id="content">
+
+			<ui:insert name="pageTopNav">
+			</ui:insert>
+
+			<ui:insert name="pageTitle">
+			</ui:insert>
+
+			<div class="line"></div>
+
+			<ui:insert name="content">
+			</ui:insert>
+
+		</div>
+	</div>
+
+	<!-- jQuery CDN - Slim version (=without AJAX) -->
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+	<!-- Popper.JS -->
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+	<!-- Bootstrap JS -->
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+
+
+	<script type="text/javascript">
+    	var $j = jQuery.noConflict();
+        $j(document).ready(function () {
+            $j('#sidebarCollapse').on('click', function () {
+                $j('#sidebar').toggleClass('active');
+            });
+        });
+    </script>
+
+</body>
+
+</html>

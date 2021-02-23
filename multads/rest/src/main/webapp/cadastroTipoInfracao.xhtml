@@ -1,29 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-  xmlns:h="http://java.sun.com/jsf/html"
-  xmlns:f="http://java.sun.com/jsf/core"
-  xmlns:p="http://primefaces.org/ui">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:comps="http://java.sun.com/jsf/composite/comps">
 
-<h:head>
+<ui:composition template="templates/baseLayout.xhtml">
 
-</h:head>
+	<ui:define name="pageTitle">
+		<h2>#{msg.person_title}</h2>
+		<p>#{personBean.person.name}</p>
+	</ui:define>
 
-<h:body>
-  <h:form>
-    <p:messages id="messages" />
-    <p:panelGrid columns="2">
-      <p:outputLabel for="nomeUsuario" value="Nome
-      Usuário:" />
-      <p:inputText id="nomeUsuario"
-      value="#{loginbean.login}" />
+	<ui:define name="content">
 
-      <p:outputLabel for="senha" value="Senha:" />
-      <p:password id="senha" value="#{loginbean.senha}" />
+		<h:form>
+			<h:panelGrid columns="3" border="0">
 
-      <p:commandButton value="Enviar"
-      icon="ui-icon-star" action="#{loginbean.logIn()}" ajax="false">
-      </p:commandButton>
+				<h:outputText value="Descricao" />
+				<p:inputText id="description"
+					value="#{tipoinfracaobean.tpinfracao.descricao}" />
+				<p:message for="description" display="text" />
 
-    </p:panelGrid>
-  </h:form>
-</h:body>
+				<h:outputText value="Pontuacao" />
+				<p:inputNumber id="pontuacao"
+					value="#{tipoinfracaobean.tpinfracao.pontuacao}" />
+				<p:message for="pontuacao" display="text" />
+
+
+				<h:outputText value="Valor" />
+				<p:inputNumber id="valor"
+					value="#{tipoinfracaobean.tpinfracao.valor}" />
+				<p:message for="valor" display="text" />
+
+
+			</h:panelGrid>
+
+			<p />
+			<p:commandButton value="Salvar" ajax="false"
+				action="listaTipoInfracao" actionListener="#{tipoinfracaobean.save}" />
+			<p:commandLink immediate="true"
+				 value="Excluir"
+				style="color: red; font-weight: bold;">
+
+				<p:confirm header="Confirme a exclusão"
+					message="Tem certeza que deseja excluir: #{tipoinfracaobean.tpinfracao.descricao}?"
+					icon="pi pi-exclamation-triangle" />
+			</p:commandLink>
+
+			<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+				<p:commandButton value="Sim" styleClass="ui-confirmdialog-yes"
+					immediate="true" icon="pi pi-check"
+					action="#{tipoinfracaobean.deleteTpInfracao()}">
+				</p:commandButton>
+				<p:commandButton value="Não" type="button"
+					styleClass="ui-confirmdialog-no" icon="pi pi-times" />
+			</p:confirmDialog>
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>
+
 </html>

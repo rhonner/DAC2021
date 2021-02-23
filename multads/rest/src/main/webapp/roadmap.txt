@@ -9,6 +9,10 @@ V0.0.0.4
 - Dao generico criado
 - Daos individuais criados
 
-V0.0.0.4
+V0.0.0.5
 - Criada primeira page exemplo cadastroTipoInfracao
 - Criada primeira bean exemplo
+
+V0.0.0.6
+- Criada page CRUD de TipoInfracao
+- Adicionado beans e devidas configuracoes

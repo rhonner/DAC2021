@@ -14,6 +14,11 @@ public class TipoInfracaoDao extends PersistenceDao<TipoInfracao>{
         return getBy(ctrn);
     }
     	
+    public List<TipoInfracao>getList(){
+    	
+    	return getList(Order.asc("id"));
+    }
+    
     public List<TipoInfracao>getList(String search){
     	Criterion ctrnDescription = Restrictions.like("descricao", "%" + search + "%").ignoreCase();
         return getList(ctrnDescription, Order.asc("id"));

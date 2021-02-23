@@ -1,59 +1,66 @@
-<html xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:ui="http://java.sun.com/jsf/facelets"
-    xmlns:f="http://java.sun.com/jsf/core"
-    xmlns:h="http://java.sun.com/jsf/html"
-    xmlns:p="http://primefaces.org/ui"
-    xmlns:pe="http://primefaces.org/ui/extensions">
- 
-<h:head>
-    <title>titulo</title>
-    <meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
 
-	<title>Setor7 SGAF</title>
+   	<ui:composition template="basePage.xhtml">
+   	
+   		<ui:define name="pageSideBar">
+	        <!-- Sidebar  -->
+	        <nav id="sidebar">        	
+	            <div class="sidebar-header">
+	            	<h:graphicImage value="images/marquinhos.png" 
+						width="220" height="100" />
+					<br/>
+	            	<h:form>
+	            		<br/>            
+	            		<h:commandLink rendered="false" 
+	            		value="SGAF 10" action="index" styleClass="h3" />
+	            		<h:commandLink value="/rest" action="index" styleClass="h3" />
+	            	</h:form>
+	            </div>
 
-	<!-- Favicon -->
-	<link rel="icon" href="images/setor7ico.png" type="image/png" />
+	            <ui:include src="/templates/sideMenu.xhtml" />
+				<ui:include src="/templates/sideMenuButtons.xhtml" />
+	        </nav>
+		</ui:define>
+		
+		<ui:define name="pageTopNav">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
 
-	<!-- material google icon cdn -->
-	<link rel="stylesheet"
-		href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-	<!-- Bootstrap CSS CDN -->
+                    <button type="button" id="sidebarCollapse" class="btn btn-info">
+                        <i class="fas fa-align-left"></i>
+                        <span>Menu</span>
+                    </button>
 
-	<link rel="stylesheet"
-		href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
-		integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
-		crossorigin="anonymous" />
-	<!-- Our Custom CSS -->
-	<link rel="stylesheet" href="css/style.css" />
+                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" 
+                    	data-toggle="collapse" data-target="#navbarSupportedContent" 
+                    	aria-controls="navbarSupportedContent" aria-expanded="false" 
+                    	aria-label="Toggle navigation">
+                        <i class="fas fa-align-justify"></i>                        
+                    </button>
 
-	<!-- Font Awesome JS -->
-	<script src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"></script>
-	<script
-		src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js"></script>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">                    	
+                        <ul class="nav navbar-nav ml-auto">                        	
+                            <li class="nav-item">                                                        	
+                                <a class="nav-link" onclick="signOut();">
+								  <span id="topbar-exitlabel">
 
-	<!-- Created Scripts -->
-	<script type="text/javascript" src="./js/utilsv3.js"></script>
-    
-</h:head>
-<h:body>
-    <pe:layout id="fullPage" stateCookie="true" widgetVar="fpLayoutWidget">
-        <pe:layoutPane minSize="250px" position="north" styleClassContent="conteudoPanel">
-            Cabecalho - Menu
-        </pe:layoutPane>
-        <pe:layoutPane position="center" styleClassContent="conteudoPanel">
-            Parte para inserir mensagens do sistema<br/>
-            <ui:insert name="centerContent">
-                Parte Central - Aonde vai a pagina xhtml a ser inserida
-            </ui:insert>
-        </pe:layoutPane>
-        <pe:layoutPane position="east" styleClassContent="conteudoPanel">
-            Painel à direita
-        </pe:layoutPane>
-        <pe:layoutPane position="south" styleClassContent="conteudoPanel">
-            Rodapé
-        </pe:layoutPane>
-    </pe:layout>
-</h:body>
-</html>
+			                      </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                </div>
+            </nav>
+		</ui:define>
+		
+	</ui:composition>
+   	
+</html>   	
