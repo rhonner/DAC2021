@@ -18,7 +18,7 @@
 
 	<ui:define name="content">
 
-		<h:form>
+		<h:form id="formCadastroInfracao">
 			<h:panelGrid columns="3" border="0">
 
 				<h:outputText value="Descricao" />
@@ -28,9 +28,9 @@
 
 				<h:outputText value="Tipo" />
 							<p:selectOneMenu id="tipoinfracao"
-								value="#{infracaobean.tpinfracao}">
+								value="#{infracaobean.infracao.tipoinfracao}">
 								<f:selectItem itemValue="#{null}" itemLabel="-- selecione --" />
-								<f:selectItems value="#{tipoinfracaobean.list}" var="tppinfracao"
+								<f:selectItems value="#{enumBean.tiposInfracoes}" var="tppinfracao"
 									itemLabel="#{tppinfracao.descricao}" itemValue="#{tppinfracao}" />
 							</p:selectOneMenu>
 

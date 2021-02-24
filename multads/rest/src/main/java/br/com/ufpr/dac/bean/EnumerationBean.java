@@ -3,6 +3,7 @@ package br.com.ufpr.dac.bean;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
@@ -26,5 +27,11 @@ public class EnumerationBean {
         return listaSelect;
     }
     
-    
+    @PostConstruct
+    public List<TipoInfracao> getTiposInfracoes() {
+    	TipoInfracaoDao tidao = new TipoInfracaoDao();
+		return tidao.getList();
     }
+    
+    
+ }

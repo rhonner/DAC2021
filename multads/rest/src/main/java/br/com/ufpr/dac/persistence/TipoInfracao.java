@@ -1,6 +1,7 @@
 package br.com.ufpr.dac.persistence;
 
 import java.util.List;
+import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -70,6 +71,25 @@ public class TipoInfracao {
 	public void setValor(float valor) {
 		this.valor = valor;
 	}
+	
+	@Override
+    public boolean equals(Object object) {
+        // Basic checks.
+        if (object == this) return true;
+        if (!(object instanceof TipoInfracao)) return false;
+
+        // Property checks.
+        TipoInfracao other = (TipoInfracao) object;
+        return Objects.equals(id, other.id)
+            && Objects.equals(descricao, other.descricao)
+            && (pontuacao == other.pontuacao)
+            && (valor == other.valor);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, descricao, pontuacao, valor);
+    }
 	
 	
 	

@@ -19,3 +19,6 @@ V0.0.0.6
 
 V0.0.0.7
 - Criada page CRUD de Infracao com bug em selectonemenu
+
+V0.0.0.8
+- Correcao em bug de selectonemenu
