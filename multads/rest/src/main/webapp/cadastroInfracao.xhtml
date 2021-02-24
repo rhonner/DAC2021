@@ -30,7 +30,7 @@
 							<p:selectOneMenu id="tipoinfracao"
 								value="#{infracaobean.infracao.tipoinfracao}">
 								<f:selectItem itemValue="#{null}" itemLabel="-- selecione --" />
-								<f:selectItems value="#{enumBean.tiposInfracoes}" var="tppinfracao"
+								<f:selectItems value="#{tipoinfracaobean.list}" var="tppinfracao"
 									itemLabel="#{tppinfracao.descricao}" itemValue="#{tppinfracao}" />
 							</p:selectOneMenu>
 
