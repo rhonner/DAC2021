@@ -16,3 +16,6 @@ V0.0.0.5
 V0.0.0.6
 - Criada page CRUD de TipoInfracao
 - Adicionado beans e devidas configuracoes
+
+V0.0.0.7
+- Criada page CRUD de Infracao com bug em selectonemenu

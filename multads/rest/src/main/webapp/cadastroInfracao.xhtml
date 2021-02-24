@@ -12,7 +12,7 @@
 <ui:composition template="templates/baseLayout.xhtml">
 
 	<ui:define name="pageTitle">
-		<h2>Cadastro de Tipos de Infracao</h2>
+		<h2>Cadastro de Infracao</h2>
 		<p></p>
 	</ui:define>
 
@@ -23,39 +23,35 @@
 
 				<h:outputText value="Descricao" />
 				<p:inputText id="description"
-					value="#{tipoinfracaobean.tpinfracao.descricao}" />
+					value="#{infracaobean.infracao.descricao}" />
 				<p:message for="description" display="text" />
 
-				<h:outputText value="Pontuacao" />
-				<p:inputNumber id="pontuacao"
-					value="#{tipoinfracaobean.tpinfracao.pontuacao}" />
-				<p:message for="pontuacao" display="text" />
-
-
-				<h:outputText value="Valor" />
-				<p:inputNumber id="valor"
-					value="#{tipoinfracaobean.tpinfracao.valor}" />
-				<p:message for="valor" display="text" />
+				<h:outputText value="Tipo" />
+							<p:selectOneMenu id="tipoinfracao"
+								value="#{infracaobean.tpinfracao}">
+								<f:selectItem itemValue="#{null}" itemLabel="-- selecione --" />
+								<f:selectItems value="#{tipoinfracaobean.list}" var="tppinfracao"
+									itemLabel="#{tppinfracao.descricao}" itemValue="#{tppinfracao}" />
+							</p:selectOneMenu>
 
 
 			</h:panelGrid>
 
 			<p />
 			<p:commandButton value="Salvar" ajax="false"
-				action="listaTipoInfracao" actionListener="#{tipoinfracaobean.save}" />
-			<p:commandLink immediate="true"
-				 value="Excluir"
+				action="listaInfracao" actionListener="#{infracaobean.save}" />
+			<p:commandLink immediate="true" value="Excluir"
 				style="color: red; font-weight: bold;">
 
 				<p:confirm header="Confirme a exclusão"
-					message="Tem certeza que deseja excluir: #{tipoinfracaobean.tpinfracao.descricao}?"
+					message="Tem certeza que deseja excluir: #{infracaobean.infracao.descricao}?"
 					icon="pi pi-exclamation-triangle" />
 			</p:commandLink>
 
 			<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
 				<p:commandButton value="Sim" styleClass="ui-confirmdialog-yes"
 					immediate="true" icon="pi pi-check"
-					action="#{tipoinfracaobean.deleteTpInfracao()}">
+					action="#{infracaobean.deleteinfracao()}">
 				</p:commandButton>
 				<p:commandButton value="Não" type="button"
 					styleClass="ui-confirmdialog-no" icon="pi pi-times" />

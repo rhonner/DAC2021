@@ -26,6 +26,11 @@ public class TipoInfracaoBean {
 
 	}
 
+	
+	public List<TipoInfracao>getList(){
+		TipoInfracaoDao tidao = new TipoInfracaoDao();
+		return tidao.getList();
+	}
 	private void refresh() {
 		TipoInfracaoDao tidao = new TipoInfracaoDao();
 		listagem = tidao.getList();

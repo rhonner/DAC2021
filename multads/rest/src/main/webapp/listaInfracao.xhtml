@@ -11,7 +11,7 @@
 <ui:composition template="templates/baseLayout.xhtml">
 
 	<ui:define name="pageTitle">
-		<h2>Lista de Tipos de Infracao</h2>
+		<h2>Listagem de Infracoes</h2>
 		<p></p>
 	</ui:define>
 
@@ -20,8 +20,8 @@
 		<h:form id="formList">
 
 			<h:panelGrid columns="1" border="0">
-				<h:commandLink action="cadastroTipoInfracao"
-					actionListener="#{tipoinfracaobean.add}">
+				<h:commandLink action="cadastroInfracao"
+					actionListener="#{infracaobean.add}">
 					<h:graphicImage value="images/add.png" width="32" height="32" />
 				</h:commandLink>
 
@@ -32,12 +32,12 @@
 
 			<p />
 			<p:dataTable style="width: 100%" id="list" var="objeto"
-				value="#{tipoinfracaobean.listagem}" lazy="true" paginator="true"
+				value="#{infracaobean.listagem}" lazy="true" paginator="true"
 				rows="10"
 				paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
 				rowsPerPageTemplate="5,10,15">
 				<f:facet name="header">
-					<h:outputText value="listagem" />
+					<h:outputText value="listagem de infracoes" />
 				</f:facet>
 				
 
@@ -50,15 +50,11 @@
 					<h:outputText value="#{objeto.descricao}" />
 				</p:column>
 
-				<p:column headerText="Pontuacao">
-					<h:outputText value="#{objeto.pontuacao}">
+				<p:column headerText="Tipo">
+					<h:outputText value="#{objeto.tipoinfracao.descricao}">
 					</h:outputText>
 				</p:column>
 
-				<p:column headerText="Valor">
-					<h:outputText value="#{objeto.valor}">
-					</h:outputText>
-				</p:column>
 
 				<p:column headerText="Acoes">
 
@@ -66,7 +62,7 @@
 						 action="cadastroTipoInfracao">
 						<h:graphicImage value="images/edit.png" width="32" height="32" />
 						<f:setPropertyActionListener value="#{objeto}"
-							target="#{tipoinfracaobean.tpinfracao}" />
+							target="#{infracaobean.infracao}" />
 					</h:commandLink>
 
 					
