@@ -17,6 +17,14 @@ import javax.persistence.Table;
 @Table(name = "pessoa")
 public class Pessoa {
 	
+	public Pessoa(int id, String documento, String nome, String email, Usuario usuario) {
+		this.id = id;
+		this.documento = documento;
+		this.nome = nome;
+		this.email = email;
+		this.usuario = usuario;
+	}
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;

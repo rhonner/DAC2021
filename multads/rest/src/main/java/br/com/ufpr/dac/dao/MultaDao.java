@@ -7,6 +7,7 @@ import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 
 import br.com.ufpr.dac.persistence.Multa;
+import br.com.ufpr.dac.persistence.Usuario;
 
 public class MultaDao extends PersistenceDao<Multa>{
 	
@@ -16,6 +17,11 @@ public class MultaDao extends PersistenceDao<Multa>{
     public Multa getBy(String attribute, Object value) {
         Criterion ctrn = Restrictions.eq(attribute, value);
         return getBy(ctrn);
+    }
+    
+    public List<Multa>getList(){
+    	
+    	return getList(Order.asc("id"));
     }
     
     public List<Multa>getList(String search){

@@ -7,11 +7,17 @@ import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 
 import br.com.ufpr.dac.persistence.Pagamento;
+import br.com.ufpr.dac.persistence.Usuario;
 
 public class PagamentoDao extends PersistenceDao<Pagamento>{
     public Pagamento getBy(String attribute, Object value) {
         Criterion ctrn = Restrictions.eq(attribute, value);
         return getBy(ctrn);
+    }
+    
+    public List<Pagamento>getList(){
+    	
+    	return getList(Order.asc("id"));
     }
     
     public List<Pagamento>getList(String search){

@@ -7,6 +7,7 @@ import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 
 import br.com.ufpr.dac.persistence.Perfil;
+import br.com.ufpr.dac.persistence.Usuario;
 import br.com.ufpr.dac.persistence.Perfil;
 
 public class PerfilDao extends PersistenceDao<Perfil>{
@@ -16,6 +17,11 @@ public class PerfilDao extends PersistenceDao<Perfil>{
     public Perfil getBy(String attribute, Object value) {
         Criterion ctrn = Restrictions.eq(attribute, value);
         return getBy(ctrn);
+    }
+    
+    public List<Perfil>getList(){
+    	
+    	return getList(Order.asc("id"));
     }
     
     public List<Perfil>getList(String search){

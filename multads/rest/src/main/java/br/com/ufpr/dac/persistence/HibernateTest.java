@@ -5,6 +5,7 @@ import java.util.List;
 import org.hibernate.Session;
 
 import br.com.ufpr.dac.dao.PagamentoDao;
+import br.com.ufpr.dac.dao.PessoaDao;
 import br.com.ufpr.dac.util.HibernateUtil;
 
 public class HibernateTest {
@@ -25,7 +26,9 @@ public static void main(String[] args) {
 		 * u.setSenha("testesenha2"); u.setPerfil(pdao.getById(2)); m.setUsuario(u);
 		 * mdao.inserir(m);
 		 */
-        
+        PessoaDao pdao = new PessoaDao();
+        List <Pessoa> lista = pdao.listPolices();
+        Pessoa p = lista.get(0);
         PagamentoDao mdao = new PagamentoDao();
         List<Pagamento>plist = mdao.getList("1");
         for (Pagamento pagamento : plist) {

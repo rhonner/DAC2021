@@ -9,6 +9,7 @@ import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 
 import br.com.ufpr.dac.persistence.Usuario;
+import br.com.ufpr.dac.persistence.Usuario;
 
 public class UsuarioDao  extends PersistenceDao<Usuario> {
 	public Usuario getBy(String attribute, Object value) {
@@ -16,6 +17,11 @@ public class UsuarioDao  extends PersistenceDao<Usuario> {
         return getBy(ctrn);
     }
     
+    public List<Usuario>getList(){
+    	
+    	return getList(Order.asc("id"));
+    }
+	
 	public boolean getByLoginPassword(String login, String senha) {
         String sqlScript = "Select 1 from Usuario where login = :login and senha = :senha ;";
         Session session = sessionBuilder.getSession();

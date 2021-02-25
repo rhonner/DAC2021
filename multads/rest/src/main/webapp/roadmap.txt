@@ -31,3 +31,6 @@ V0.0.0.10
 
 V0.0.0.11
 - Criada pagina de cadastroPolicial e iniciada criação da Bean pessoa 
+
+V0.0.0.12
+- Listagem de policiais e listagem geral para todas persistencias adicionada aos daos

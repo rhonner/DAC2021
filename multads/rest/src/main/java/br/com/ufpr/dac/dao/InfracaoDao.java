@@ -7,12 +7,18 @@ import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 
 import br.com.ufpr.dac.persistence.Infracao;
+import br.com.ufpr.dac.persistence.Usuario;
 
 public class InfracaoDao extends PersistenceDao<Infracao>{
 	
     public Infracao getBy(String attribute, Object value) {
         Criterion ctrn = Restrictions.eq(attribute, value);
         return getBy(ctrn);
+    }
+    
+    public List<Infracao>getList(){
+    	
+    	return getList(Order.asc("id"));
     }
     
     public List<Infracao>getList(String search){
