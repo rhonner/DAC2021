@@ -1,19 +1,17 @@
 package br.com.ufpr.dac.bean;
 
-import java.io.IOException;
-import java.io.Serializable;
-
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.context.FacesContext;
 
+import br.com.ufpr.dac.dao.UsuarioDao;
 import br.com.ufpr.dac.persistence.Usuario;
 
 @SessionScoped
 @ManagedBean(name = "loginbean")
 public class LoginBean extends BackingBean{
 
-	private Usuario usuario;
+	private Usuario usuario = new Usuario();
 	private String login;
 	private String senha;
 	
@@ -21,14 +19,17 @@ public class LoginBean extends BackingBean{
 		
 	}
 	
-	public void logIn() {
-		try {
-			FacesContext.getCurrentInstance().getExternalContext().dispatch("www.google.com");
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+	public String logIn() {
+		UsuarioDao udao = new UsuarioDao();
+		if (!udao.getByLoginPassword(usuario.getLogin(), usuario.getSenha())) {
+			String errMessage = "Login ou senha incorretos";
+			setJsfMessage("loginError", FacesMessage.SEVERITY_ERROR, errMessage);
+			return null;
 		}
-
+		else {
+			return "/listaInfracao";
+		}
+		
 	}
 	
 	public Usuario getUsuario() {

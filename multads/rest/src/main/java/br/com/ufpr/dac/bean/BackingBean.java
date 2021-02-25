@@ -9,11 +9,6 @@ import javax.faces.context.FacesContext;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 
-
-
-
-
-
 public class BackingBean implements Serializable {
 	
 	private static final long serialVersionUID = -7673568902938882861L;

@@ -25,3 +25,6 @@ V0.0.0.8
 
 V0.0.0.9
 - Criada tratativas para correção de bug nos selectmenus em todas persistances
+
+V0.0.0.10
+- Criado pagina de login (falta validar os condutores por service)

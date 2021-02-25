@@ -82,8 +82,8 @@ public class TipoInfracao {
         TipoInfracao other = (TipoInfracao) object;
         return Objects.equals(id, other.id)
             && Objects.equals(descricao, other.descricao)
-            && (pontuacao == other.pontuacao)
-            && (valor == other.valor);
+            && Objects.equals(pontuacao, other.pontuacao)
+            && Objects.equals(valor, other.valor);
     }
 
     @Override
