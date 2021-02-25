@@ -28,3 +28,6 @@ V0.0.0.9
 
 V0.0.0.10
 - Criado pagina de login (falta validar os condutores por service)
+
+V0.0.0.11
+- Criada pagina de cadastroPolicial e iniciada criação da Bean pessoa 

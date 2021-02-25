@@ -52,7 +52,7 @@ public class InfracaoBean {
 		try {
 
 			tidao.excluir(infracao);
-			FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Usuário excluido",
+			FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Infração excluida",
 					"<a href=\"listaInfracao.xhtml\">Sair</a>");
 			PrimeFaces.current().dialog().showMessageDynamic(message, false);
 			refresh();

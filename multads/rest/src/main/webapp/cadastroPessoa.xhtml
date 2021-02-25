@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:comps="http://java.sun.com/jsf/composite/comps">
+
+<ui:composition template="templates/baseLayout.xhtml">
+
+	<ui:define name="pageTitle">
+		<h2>Cadastro de Policial</h2>
+		<p></p>
+	</ui:define>
+
+	<ui:define name="content">
+
+		<h:form id="formCadastroPolicial">
+			<h:panelGrid columns="3" border="0">
+
+				<h:outputText value="Nome" />
+				<p:inputText id="name" value="#{pessoabean.pessoa.nome}" />
+				<p:message for="nome" display="text" />
+
+
+				<h:outputText value="Email" />
+				<p:inputText id="email" value="#{pessoabean.pessoa.email}" />
+				<p:message for="email" display="text" />
+
+
+				<h:outputText value="CPF" />
+				<p:inputText id="cpf" value="#{pessoabean.pessoa.documento}" />
+				<p:message for="cpf" display="text" />
+
+			</h:panelGrid>
+
+			<p />
+			<p:commandButton value="Salvar" ajax="false" action="listaInfracao"
+				actionListener="#{infracaobean.save}" />
+			<p:commandLink immediate="true" value="Excluir"
+				style="color: red; font-weight: bold;">
+
+				<p:confirm header="Confirme a exclusão"
+					message="Tem certeza que deseja excluir: #{infracaobean.infracao.descricao}?"
+					icon="pi pi-exclamation-triangle" />
+			</p:commandLink>
+
+			<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+				<p:commandButton value="Sim" styleClass="ui-confirmdialog-yes"
+					immediate="true" icon="pi pi-check"
+					action="#{infracaobean.deleteinfracao()}">
+				</p:commandButton>
+				<p:commandButton value="Não" type="button"
+					styleClass="ui-confirmdialog-no" icon="pi pi-times" />
+			</p:confirmDialog>
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>
+
+</html>
