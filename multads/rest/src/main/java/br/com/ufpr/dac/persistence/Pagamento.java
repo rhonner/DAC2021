@@ -1,6 +1,7 @@
 package br.com.ufpr.dac.persistence;
 
 import java.sql.Timestamp;
+import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -71,5 +72,24 @@ public class Pagamento {
 		this.multa = multa;
 	}
 
+	@Override
+    public boolean equals(Object object) {
+        // Basic checks.
+        if (object == this) return true;
+        if (!(object instanceof Pagamento)) return false;
+
+        // Property checks.
+        Pagamento other = (Pagamento) object;
+        return Objects.equals(id, other.id)
+            && Objects.equals(datapagamento, other.datapagamento)
+            && Objects.equals(atrasodias, other.atrasodias)
+            && Objects.equals(valor, other.valor)
+            && Objects.equals(multa, other.multa);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, datapagamento, atrasodias, valor, multa);
+    }
 	
 }

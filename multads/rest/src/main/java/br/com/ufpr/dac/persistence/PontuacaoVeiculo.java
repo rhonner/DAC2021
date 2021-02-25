@@ -1,6 +1,7 @@
 package br.com.ufpr.dac.persistence;
 
 import java.sql.Timestamp;
+import java.util.Objects;
 
 public class PontuacaoVeiculo {
 	private int id;
@@ -42,6 +43,23 @@ public class PontuacaoVeiculo {
 		this.dataultima = dataultima;
 	}
 	
-	
+	@Override
+    public boolean equals(Object object) {
+        // Basic checks.
+        if (object == this) return true;
+        if (!(object instanceof PontuacaoVeiculo)) return false;
+
+        // Property checks.
+        PontuacaoVeiculo other = (PontuacaoVeiculo) object;
+        return Objects.equals(id, other.id)
+            && Objects.equals(renavam, other.renavam)
+            && Objects.equals(pontuacao, other.pontuacao)
+            && Objects.equals(dataultima, other.dataultima);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, renavam, pontuacao, dataultima);
+    }
 	
 }

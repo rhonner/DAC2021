@@ -1,6 +1,7 @@
 package br.com.ufpr.dac.persistence;
 
 import java.sql.Timestamp;
+import java.util.Objects;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -86,5 +87,25 @@ public class Multa {
 		this.infracao = infracao;
 	}
 
+	@Override
+    public boolean equals(Object object) {
+        // Basic checks.
+        if (object == this) return true;
+        if (!(object instanceof Multa)) return false;
+
+        // Property checks.
+        Multa other = (Multa) object;
+        return Objects.equals(id, other.id)
+            && Objects.equals(renavam, other.renavam)
+            && Objects.equals(documento, other.documento)
+            && Objects.equals(datamulta, other.datamulta)
+            && Objects.equals(descricao, other.descricao)
+            && Objects.equals(infracao, other.infracao);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, renavam, documento, datamulta, descricao, infracao);
+    }
 	
 }

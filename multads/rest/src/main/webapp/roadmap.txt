@@ -22,3 +22,6 @@ V0.0.0.7
 
 V0.0.0.8
 - Correcao em bug de selectonemenu
+
+V0.0.0.9
+- Criada tratativas para correção de bug nos selectmenus em todas persistances

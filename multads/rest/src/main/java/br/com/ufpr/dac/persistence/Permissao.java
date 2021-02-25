@@ -2,6 +2,7 @@ package br.com.ufpr.dac.persistence;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -52,5 +53,22 @@ public class Permissao {
 		this.perfis = perfis;
 	}
 	
+	@Override
+    public boolean equals(Object object) {
+        // Basic checks.
+        if (object == this) return true;
+        if (!(object instanceof Permissao)) return false;
+
+        // Property checks.
+        Permissao other = (Permissao) object;
+        return Objects.equals(id, other.id)
+            && Objects.equals(descricao, other.descricao)
+            && Objects.equals(perfis, other.perfis);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, descricao, perfis);
+    }
 	
 }

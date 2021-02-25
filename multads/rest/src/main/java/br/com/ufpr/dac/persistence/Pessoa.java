@@ -1,5 +1,7 @@
 package br.com.ufpr.dac.persistence;
 
+import java.util.Objects;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -74,6 +76,26 @@ public class Pessoa {
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
+	
+	@Override
+    public boolean equals(Object object) {
+        // Basic checks.
+        if (object == this) return true;
+        if (!(object instanceof Pessoa)) return false;
+
+        // Property checks.
+        Pessoa other = (Pessoa) object;
+        return Objects.equals(id, other.id)
+            && Objects.equals(documento, other.documento)
+            && Objects.equals(nome, other.nome)
+            && Objects.equals(email, other.email)
+            && Objects.equals(usuario, other.usuario);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, documento, nome, email, usuario);
+    }
 	
 	
 }
