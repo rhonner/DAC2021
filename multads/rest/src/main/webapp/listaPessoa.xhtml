@@ -11,7 +11,7 @@
 <ui:composition template="templates/baseLayout.xhtml">
 
 	<ui:define name="pageTitle">
-		<h2>Listagem de Infracoes</h2>
+		<h2>Listagem de Policiais</h2>
 		<p></p>
 	</ui:define>
 
@@ -20,53 +20,43 @@
 		<h:form id="formList">
 
 			<h:panelGrid columns="1" border="0">
-				<h:commandLink action="cadastroInfracao"
-					actionListener="#{infracaobean.add}">
+				<h:commandLink action="cadastroPolicial"
+					actionListener="#{pessoabean.add}">
 					<h:graphicImage value="images/add.png" width="32" height="32" />
 				</h:commandLink>
-
-
-
-
 			</h:panelGrid>
 
 			<p />
 			<p:dataTable style="width: 100%" id="list" var="objeto"
-				value="#{infracaobean.listagem}" lazy="true" paginator="true"
+				value="#{pessoabean.listagem}" lazy="true" paginator="true"
 				rows="10"
 				paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
 				rowsPerPageTemplate="5,10,15">
 				<f:facet name="header">
-					<h:outputText value="listagem de infracoes" />
+					<h:outputText value="listagem de Policiais" />
 				</f:facet>
-				
-
 				<p:column headerText="Id">
 					<h:outputText value="#{objeto.id}" />
-
 				</p:column>
 
-				<p:column headerText="Descricao">
-					<h:outputText value="#{objeto.descricao}" />
+				<p:column headerText="Nome">
+					<h:outputText value="#{objeto.nome}" />
 				</p:column>
 
-				<p:column headerText="Tipo">
-					<h:outputText value="#{objeto.tipoinfracao.descricao}">
-					</h:outputText>
+				<p:column headerText="Documento">
+					<h:outputText value="#{objeto.documento}" />
 				</p:column>
 
+				<p:column headerText="Email">
+					<h:outputText value="#{objeto.email}" />
+				</p:column>
 
 				<p:column headerText="Ações">
-
-					<h:commandLink immediate="true"
-						 action="cadastroTipoInfracao">
+					<h:commandLink immediate="true" action="cadastroPessoa">
 						<h:graphicImage value="images/edit.png" width="32" height="32" />
 						<f:setPropertyActionListener value="#{objeto}"
-							target="#{infracaobean.infracao}" />
+							target="#{pessoabean.pessoa}" />
 					</h:commandLink>
-
-					
-
 				</p:column>
 
 			</p:dataTable>

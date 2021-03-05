@@ -37,3 +37,10 @@ V0.0.0.12
 
 V0.0.0.13
 - Adicionado jax-rs no pom
+
+V0.0.0.14
+- Finalizado crud policial(telas, bean), exceto delete ainda com problemas;
+- Adicionada Bean de Usuario;
+- Notação (@GeneratedValue(strategy = GenerationType.IDENTITY)) nas classes de Pessoa e Usuario, alteradas para: 
+  @GeneratedValue(strategy = GenerationType.AUTO);
+- Correções ortográficas de algumas telas.

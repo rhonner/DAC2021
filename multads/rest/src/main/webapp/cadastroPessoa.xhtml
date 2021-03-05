@@ -21,8 +21,16 @@
 		<h:form id="formCadastroPolicial">
 			<h:panelGrid columns="3" border="0">
 
+				<h:outputText value="Login" />
+				<p:inputText id="login" value="#{pessoabean.pessoa.usuario.login}" />
+				<p:message for="login" display="text" />
+				
+				<h:outputText value="Senha" />
+				<p:inputText id="senha" type="password" value="#{pessoabean.pessoa.usuario.senha}" />
+				<p:message for="senha" display="text" />
+
 				<h:outputText value="Nome" />
-				<p:inputText id="name" value="#{pessoabean.pessoa.nome}" />
+				<p:inputText id="nome" value="#{pessoabean.pessoa.nome}" />
 				<p:message for="nome" display="text" />
 
 
@@ -38,20 +46,20 @@
 			</h:panelGrid>
 
 			<p />
-			<p:commandButton value="Salvar" ajax="false" action="listaInfracao"
-				actionListener="#{infracaobean.save}" />
+			<p:commandButton value="Salvar" ajax="false" action="listaPessoa"
+				actionListener="#{pessoabean.save}" />
 			<p:commandLink immediate="true" value="Excluir"
 				style="color: red; font-weight: bold;">
 
 				<p:confirm header="Confirme a exclusão"
-					message="Tem certeza que deseja excluir: #{infracaobean.infracao.descricao}?"
+					message="Tem certeza que deseja excluir: #{pessoabean.pessoa.nome}?"
 					icon="pi pi-exclamation-triangle" />
 			</p:commandLink>
 
 			<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
 				<p:commandButton value="Sim" styleClass="ui-confirmdialog-yes"
 					immediate="true" icon="pi pi-check"
-					action="#{infracaobean.deleteinfracao()}">
+					action="#{pessoabean.deletepessoa()}">
 				</p:commandButton>
 				<p:commandButton value="Não" type="button"
 					styleClass="ui-confirmdialog-no" icon="pi pi-times" />

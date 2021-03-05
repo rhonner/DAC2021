@@ -50,7 +50,6 @@ public class InfracaoBean {
 	public void deleteinfracao() {
 		InfracaoDao tidao = new InfracaoDao();
 		try {
-
 			tidao.excluir(infracao);
 			FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Infração excluida",
 					"<a href=\"listaInfracao.xhtml\">Sair</a>");
