@@ -57,3 +57,6 @@ V0.0.0.16
 - Novos métodos criados em UsuarioDAO;
 - Falta arrumar: listagem não atualizando com os dados do banco(mas sim da sessão/cache); 
   Na hora de deletar pessoa, necessário também deletar usuario, porém algo está relacionado ao usuario.
+ 
+V0.0.0.17
+- Cria service de multas com o get
