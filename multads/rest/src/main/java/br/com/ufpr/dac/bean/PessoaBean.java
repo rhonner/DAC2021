@@ -44,7 +44,7 @@ public class PessoaBean {
 		this.perfil = perfil;
 	}
 
-	private void refresh() {
+	public void refresh() {
 		PessoaDao pedao = new PessoaDao();
 		setListagem(pedao.listPolices());
 	}
@@ -53,6 +53,8 @@ public class PessoaBean {
 		PessoaDao pedao = new PessoaDao();
 		UsuarioDao udao = new UsuarioDao();
 		if (pessoa.getId() == 0) {
+			udao.inserir(usuario);
+			pessoa.setUsuario(udao.getLast()); //Para salvar no banco, gerar Id e então ser possível gerar a vinculação com pessoa
 			pedao.inserir(pessoa);
 		} else {
 			udao.alterar(pessoa.getUsuario());
@@ -65,8 +67,11 @@ public class PessoaBean {
 		PessoaDao pedao = new PessoaDao();
 		UsuarioDao udao = new UsuarioDao();
 		try {
+			int userId = pessoa.getUsuario().getId();
+			pessoa.setUsuario(null);
+			udao.excluir(udao.getById(userId));
 			pedao.excluir(pessoa);
-			udao.excluir(pessoa.getUsuario());
+			setListagem(pedao.listPolices());
 			FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Policial excluído",
 					"<a href=\"listaPessoa.xhtml\">Sair</a>");
 			PrimeFaces.current().dialog().showMessageDynamic(message, false);
@@ -89,7 +94,12 @@ public class PessoaBean {
 	}
 
 	public void add() {
+		PerfilDao perfildao = new PerfilDao();
 		pessoa = new Pessoa();
+		usuario = new Usuario();
+		perfil = new Perfil();
+		usuario.setPerfil(perfildao.getById(2));
+		pessoa.setUsuario(usuario);
 	}
 
 	public List<Pessoa> listagem() {

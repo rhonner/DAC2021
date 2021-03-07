@@ -44,3 +44,16 @@ V0.0.0.14
 - Notação (@GeneratedValue(strategy = GenerationType.IDENTITY)) nas classes de Pessoa e Usuario, alteradas para: 
   @GeneratedValue(strategy = GenerationType.AUTO);
 - Correções ortográficas de algumas telas.
+
+V0.0.0.15
+- Finalizado crud policial(telas, bean), exceto delete ainda com problemas;
+- Adicionada Bean de Usuario;
+- Notação (@GeneratedValue(strategy = GenerationType.IDENTITY)) nas classes de Pessoa e Usuario, alteradas para: 
+  @GeneratedValue(strategy = GenerationType.AUTO);
+- Correções ortográficas de algumas telas.
+
+V0.0.0.16
+- Updates no crud Pessoa;
+- Novos métodos criados em UsuarioDAO;
+- Falta arrumar: listagem não atualizando com os dados do banco(mas sim da sessão/cache); 
+  Na hora de deletar pessoa, necessário também deletar usuario, porém algo está relacionado ao usuario.

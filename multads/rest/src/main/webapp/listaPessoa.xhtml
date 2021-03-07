@@ -20,7 +20,7 @@
 		<h:form id="formList">
 
 			<h:panelGrid columns="1" border="0">
-				<h:commandLink action="cadastroPolicial"
+				<h:commandLink action="cadastroPessoa"
 					actionListener="#{pessoabean.add}">
 					<h:graphicImage value="images/add.png" width="32" height="32" />
 				</h:commandLink>
@@ -52,12 +52,16 @@
 				</p:column>
 
 				<p:column headerText="Ações">
+
 					<h:commandLink immediate="true" action="cadastroPessoa">
 						<h:graphicImage value="images/edit.png" width="32" height="32" />
 						<f:setPropertyActionListener value="#{objeto}"
 							target="#{pessoabean.pessoa}" />
 					</h:commandLink>
+
 				</p:column>
+
+
 
 			</p:dataTable>
 		</h:form>

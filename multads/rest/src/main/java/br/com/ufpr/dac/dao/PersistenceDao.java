@@ -73,12 +73,9 @@ public abstract class PersistenceDao<T> implements EntityDao<T>, Serializable {
             Session session = HibernateUtil.getSession();
             Transaction tx = session.beginTransaction();
             try {
-                
                 session.refresh(entity);
                 session.delete(entity);
                 tx.commit();
-                
-                  
             } catch (Exception ex) {
                 tx.rollback();
             	ex.printStackTrace();

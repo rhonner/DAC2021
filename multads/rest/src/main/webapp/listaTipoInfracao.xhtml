@@ -39,7 +39,7 @@
 				<f:facet name="header">
 					<h:outputText value="listagem" />
 				</f:facet>
-				
+
 
 				<p:column headerText="Id">
 					<h:outputText value="#{objeto.id}" />
@@ -60,16 +60,31 @@
 					</h:outputText>
 				</p:column>
 
-				<p:column headerText="Acoes">
+				<p:column headerText="Ações">
 
-					<h:commandLink immediate="true"
-						 action="cadastroTipoInfracao">
+					<h:commandLink immediate="true" action="cadastroTipoInfracao">
 						<h:graphicImage value="images/edit.png" width="32" height="32" />
 						<f:setPropertyActionListener value="#{objeto}"
 							target="#{tipoinfracaobean.tpinfracao}" />
 					</h:commandLink>
 
-					
+<!-- 					<p:commandLink immediate="true"> -->
+<!-- 						<f:setPropertyActionListener value="#{objeto}" -->
+<!-- 							target="#{tipoinfracaobean.tpinfracao}" /> -->
+<!-- 						<h:graphicImage value="images/delete.png" width="32" height="32" /> -->
+<!-- 						<p:confirm header="Confirme a exclusão" -->
+<!-- 							message="Tem certeza que deseja excluir: #{tipoinfracaobean.tpinfracao.descricao}?" -->
+<!-- 							icon="pi pi-exclamation-triangle" /> -->
+<!-- 					</p:commandLink> -->
+
+<!-- 					<p:confirmDialog global="true" showEffect="fade" hideEffect="fade"> -->
+<!-- 						<p:commandButton value="Sim" styleClass="ui-confirmdialog-yes" -->
+<!-- 							immediate="true" icon="pi pi-check" -->
+<!-- 							action="#{tipoinfracaobean.deleteTpInfracao()}"> -->
+<!-- 						</p:commandButton> -->
+<!-- 						<p:commandButton value="Não" type="button" -->
+<!-- 							styleClass="ui-confirmdialog-no" icon="pi pi-times" /> -->
+<!-- 					</p:confirmDialog> -->
 
 				</p:column>
 

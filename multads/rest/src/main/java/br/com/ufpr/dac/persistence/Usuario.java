@@ -12,11 +12,22 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import br.com.ufpr.dac.dao.PerfilDao;
+
 @Entity
 @Table(name = "usuario")
 public class Usuario {
+	
+	public Usuario(int id, String login, int tipoperfil, String senha) {
+		PerfilDao pdao = new PerfilDao();
+		this.id = id;
+		this.login = login;
+		this.perfil = pdao.getById(tipoperfil);
+		this.senha = senha;
+	}
+	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	@Column(name ="login")
 	private String login;

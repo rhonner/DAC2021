@@ -26,7 +26,7 @@ public class Pessoa {
 	}
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
 	@Column(name ="documento")
@@ -36,7 +36,7 @@ public class Pessoa {
 	@Column(name = "email")
 	private String email;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne()
 	@JoinColumn(name = "idusuario")
 	private Usuario usuario;
 	
