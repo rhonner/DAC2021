@@ -30,7 +30,7 @@ public class Multa {
 	@Column(name = "descricao")
 	private String descricao;
 	
-	@ManyToOne
+	@ManyToOne()
 	@JoinColumn(name = "idinfracao")
 	private Infracao infracao;
 	

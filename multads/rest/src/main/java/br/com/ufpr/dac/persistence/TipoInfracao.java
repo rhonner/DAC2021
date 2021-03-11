@@ -25,19 +25,17 @@ public class TipoInfracao {
 	private int pontuacao;
 	@Column(name = "valor")
 	private float valor;
-	
-	@OneToMany(mappedBy = "tipoinfracao",fetch = FetchType.LAZY)
-	private List<Infracao> infracoes;
-	
 
-	public List<Infracao> getInfracoes() {
-		return infracoes;
-	}
-
-	public void setInfracoes(List<Infracao> infracoes) {
-		this.infracoes = infracoes;
-	}
-
+	/*
+	 * @OneToMany(mappedBy = "tipoinfracao",fetch = FetchType.LAZY) private
+	 * List<Infracao> infracoes;
+	 * 
+	 * 
+	 * public List<Infracao> getInfracoes() { return infracoes; }
+	 * 
+	 * public void setInfracoes(List<Infracao> infracoes) { this.infracoes =
+	 * infracoes; }
+	 */
 	public TipoInfracao() {}
 
 	public int getId() {
