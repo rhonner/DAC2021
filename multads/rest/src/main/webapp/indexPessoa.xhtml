@@ -10,19 +10,18 @@
 <ui:composition template="templates/baseLayout.xhtml">
 
 	<ui:define name="pageTitle">
-		<h2>Comando Policial</h2>
+		<h2 class="pageT">Comando Policial</h2>
 
 		<p></p>
 	</ui:define>
 
 	<ui:define name="content">
-
 		<h:form id="formList">
 
 			<h:panelGrid columns="1" border="0">
 				<h:commandLink action="emitirMulta"
 					actionListener="#{multabean.add}">
-					<h:graphicImage value="images/add.png" width="32" height="32" />
+					<h:graphicImage value="images/multa.png" width="32" height="32" /> Emitir Multa
 				</h:commandLink>
 			</h:panelGrid>
 
@@ -56,10 +55,11 @@
 			</p:dataTable>
 		</h:form>
 
-		<table id="percents">
+		<table class="percents">
 			<tr>
 				<th>Tipo</th>
-				<th>Total (<h:outputText value="#{multabean.qtdTotal}"></h:outputText>)</th>
+				<th>Total (<h:outputText value="#{multabean.qtdTotal}"></h:outputText>)
+				</th>
 				<th>Porcentagem</th>
 			</tr>
 			<tr>
@@ -83,6 +83,19 @@
 				<td><h:outputText value="#{multabean.levePer}%" /></td>
 			</tr>
 		</table>
+
+		<table class="percents">
+			<tr>
+				<th>Total de multas emitidas neste mês</th>
+				<th>Total de multas emitidas no mês passado</th>
+			</tr>
+			<tr>
+				<td><h:outputText value="#{multabean.mesAtual}" /></td>
+				<td><h:outputText value="#{multabean.mesPassado}" /></td>
+			</tr>
+		</table>
+		
+		
 	</ui:define>
 </ui:composition>
 </html>

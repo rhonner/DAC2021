@@ -75,3 +75,6 @@ V0.0.0.21
 
 V0.0.0.22
 - correcao do roadmap
+
+V0.0.0.23
+- criacao de querys para busca de informações de BI para exibir nas dashboards da pagina de multas também criadas, e leves alteracoes visuais
