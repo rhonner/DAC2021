@@ -24,6 +24,11 @@ public class MultaDao extends PersistenceDao<Multa>{
     	return getList(Order.asc("id"));
     }
     
+    public List<Multa>getListDesc(){
+    	
+    	return getList(Order.desc("datamulta"));
+    }
+    
     public List<Multa>getList(String search){
     	Criterion ctrnDescription = Restrictions.like("descricao", "%" + search + "%").ignoreCase();
         return getList(ctrnDescription, Order.asc("id"));

@@ -11,7 +11,7 @@
 
 	<ui:define name="pageTitle">
 		<h2>Comando Policial</h2>
-		
+
 		<p></p>
 	</ui:define>
 
@@ -55,7 +55,34 @@
 				</p:column>
 			</p:dataTable>
 		</h:form>
-		<p:panel id="chart_div"></p:panel>
+
+		<table id="percents">
+			<tr>
+				<th>Tipo</th>
+				<th>Total (<h:outputText value="#{multabean.qtdTotal}"></h:outputText>)</th>
+				<th>Porcentagem</th>
+			</tr>
+			<tr>
+				<td>Gravissíma</td>
+				<td><h:outputText value="#{multabean.gravissima}" /></td>
+				<td><h:outputText value="#{multabean.gravissimaPer}%" /></td>
+			</tr>
+			<tr>
+				<td>Grave</td>
+				<td><h:outputText value="#{multabean.grave}" /></td>
+				<td><h:outputText value="#{multabean.gravePer}%" /></td>
+			</tr>
+			<tr>
+				<td>Média</td>
+				<td><h:outputText value="#{multabean.media}" /></td>
+				<td><h:outputText value="#{multabean.mediaPer}%" /></td>
+			</tr>
+			<tr>
+				<td>Leve</td>
+				<td><h:outputText value="#{multabean.leve}" /></td>
+				<td><h:outputText value="#{multabean.levePer}%" /></td>
+			</tr>
+		</table>
 	</ui:define>
 </ui:composition>
 </html>
