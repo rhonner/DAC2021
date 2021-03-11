@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:comps="http://java.sun.com/jsf/composite/comps">
+<ui:composition template="templates/baseLayout.xhtml">
+
+	<ui:define name="pageTitle">
+		<h2>Comando Policial</h2>
+		
+		<p></p>
+	</ui:define>
+
+	<ui:define name="content">
+
+		<h:form id="formList">
+
+			<h:panelGrid columns="1" border="0">
+				<h:commandLink action="emitirMulta"
+					actionListener="#{multabean.add}">
+					<h:graphicImage value="images/add.png" width="32" height="32" />
+				</h:commandLink>
+			</h:panelGrid>
+
+			<p />
+			<p:dataTable style="width: 100%" id="list" var="objeto"
+				value="#{multabean.listagem}" lazy="true" paginator="true" rows="10"
+				paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+				rowsPerPageTemplate="5,10,15">
+				<f:facet name="header">
+					<h:outputText value="Lista de Multas" />
+				</f:facet>
+				<p:column headerText="Renavam">
+					<h:outputText value="#{objeto.renavam}" />
+				</p:column>
+
+				<p:column headerText="Documento">
+					<h:outputText value="#{objeto.documento}" />
+				</p:column>
+
+				<p:column headerText="Data">
+					<h:outputText value="#{objeto.datamulta}" />
+				</p:column>
+
+				<p:column headerText="Descrição">
+					<h:outputText value="#{objeto.descricao}" />
+				</p:column>
+
+				<p:column headerText="Infracao">
+					<h:outputText value="#{objeto.infracao.descricao}" />
+				</p:column>
+			</p:dataTable>
+		</h:form>
+		<p:panel id="chart_div"></p:panel>
+	</ui:define>
+</ui:composition>
+</html>

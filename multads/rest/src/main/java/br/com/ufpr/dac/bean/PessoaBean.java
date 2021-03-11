@@ -67,10 +67,12 @@ public class PessoaBean {
 		PessoaDao pedao = new PessoaDao();
 		UsuarioDao udao = new UsuarioDao();
 		try {
-			int userId = pessoa.getUsuario().getId();
+			Usuario user = udao.getById(pessoa.getUsuario().getId());;
 			pessoa.setUsuario(null);
-			udao.excluir(udao.getById(userId));
 			pedao.excluir(pessoa);
+			user.setPessoa(null);
+			user.setPerfil(null);
+			udao.excluir(user);
 			setListagem(pedao.listPolices());
 			FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Policial excluído",
 					"<a href=\"listaPessoa.xhtml\">Sair</a>");
@@ -82,6 +84,7 @@ public class PessoaBean {
 
 	@PostConstruct
 	public void init() {
+		refresh();
 		PerfilDao perfildao = new PerfilDao();
 		PessoaDao pedao = new PessoaDao();
 		pessoa = new Pessoa();

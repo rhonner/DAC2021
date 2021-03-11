@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:comps="http://java.sun.com/jsf/composite/comps">
+
+<ui:composition template="templates/baseLayout.xhtml">
+
+	<ui:define name="pageTitle">
+		<h2>Emitir Multa</h2>
+		<p></p>
+	</ui:define>
+
+	<ui:define name="content">
+
+		<h:form id="formEmitirMulta">
+			<h:panelGrid columns="3" border="0">
+
+				<h:outputText value="Renavam" />
+				<p:inputText id="renavam" value="#{multabean.multa.renavam}" />
+				<p:message for="renavam" display="text" />
+
+				<h:outputText value="CPF" />
+				<p:inputText id="cpf" value="#{multabean.multa.documento}" />
+				<p:message for="cpf" display="text" />
+
+				<h:outputText value="Descrição" />
+				<p:inputText id="descricao" value="#{multabean.multa.descricao}" />
+				<p:message for="descricao" display="text" />
+
+				<h:outputText value="Infração" />
+				<p:selectOneMenu id="infracao" value="#{multabean.multa.infracao}">
+					<f:selectItem itemValue="#{null}" itemLabel="-- selecione --" />
+					<f:selectItems value="#{infracaobean.listagem}" var="iinfracao"
+						itemLabel="#{iinfracao.descricao}" itemValue="#{iinfracao}" />
+				</p:selectOneMenu>
+			</h:panelGrid>
+
+			<p />
+			<p:commandButton value="Salvar" ajax="false" action="indexPessoa"
+				actionListener="#{multabean.save}" />
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>
+
+</html>

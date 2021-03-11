@@ -63,3 +63,6 @@ V0.0.0.17
 
 V0.0.0.18
 - Service de multas completa(CRUD). Falta fazer validações nos responses.
+
+V0.0.0.19
+- Adicionado telas de multas, página inicial de policial, criada converter de multa, bean de multa, gráfico pra tela inicial de policial etc
