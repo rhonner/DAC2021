@@ -66,3 +66,6 @@ V0.0.0.18
 
 V0.0.0.19
 - Adicionado telas de multas, página inicial de policial, criada converter de multa, bean de multa, gráfico pra tela inicial de policial etc
+
+V0.0.0.20
+- correcao em entity loop multa infracao tipoinfracao

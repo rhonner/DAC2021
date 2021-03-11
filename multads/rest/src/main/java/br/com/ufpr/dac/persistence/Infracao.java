@@ -26,18 +26,15 @@ public class Infracao {
 	@JoinColumn(name = "idtipo")
 	private TipoInfracao tipoinfracao;
 	
-	@OneToMany(mappedBy = "infracao")
-	private List<Multa> multas;
-	
-	public Infracao() {}
-
-	public List<Multa> getMultas() {
-		return multas;
-	}
-
-	public void setMultas(List<Multa> multas) {
-		this.multas = multas;
-	}
+	/*
+	 * @OneToMany(mappedBy = "infracao") private List<Multa> multas;
+	 * 
+	 * public Infracao() {}
+	 * 
+	 * public List<Multa> getMultas() { return multas; }
+	 * 
+	 * public void setMultas(List<Multa> multas) { this.multas = multas; }
+	 */
 
 	public TipoInfracao getTipoinfracao() {
 		return tipoinfracao;
@@ -74,14 +71,13 @@ public class Infracao {
         Infracao other = (Infracao) object;
         return Objects.equals(id, other.id)
             && Objects.equals(tipoinfracao, other.tipoinfracao)
-            && Objects.equals(multas, other.multas)
             && Objects.equals(descricao, other.descricao);
 
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, tipoinfracao, multas, descricao);
+        return Objects.hash(id, tipoinfracao, descricao);
     }
 	
 }
