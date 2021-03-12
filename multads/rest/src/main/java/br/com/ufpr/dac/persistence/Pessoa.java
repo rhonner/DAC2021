@@ -37,9 +37,10 @@ public class Pessoa {
 	@Column(name = "email")
 	private String email;
 	
-	@OneToOne(mappedBy="Pessoa", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name = "idusuario")
 	private Usuario usuario;
+	
 	
 
 	public Pessoa() {}
