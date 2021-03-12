@@ -10,56 +10,65 @@
 <ui:composition template="templates/baseLayout.xhtml">
 
 	<ui:define name="pageTitle">
-		<h2>Comando Policial</h2>
+		<h2 class="pageT">Comando Policial</h2>
 
 		<p></p>
 	</ui:define>
 
 	<ui:define name="content">
-
 		<h:form id="formList">
 
 			<h:panelGrid columns="1" border="0">
 				<h:commandLink action="emitirMulta"
 					actionListener="#{multabean.add}">
-					<h:graphicImage value="images/add.png" width="32" height="32" />
+					<h:graphicImage value="images/multa.png" width="32" height="32" /> Emitir Multa
 				</h:commandLink>
 			</h:panelGrid>
 
 			<p />
 			<p:dataTable style="width: 100%" id="list" var="objeto"
-				value="#{multabean.listagem}" lazy="true" paginator="true" rows="10"
+				value="#{multabean.listagem}"
+				filteredValue="#{multabean.filteredMultaList}" widgetVar="multaWidget" lazy="true"
+				paginator="true" rows="5"
 				paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
 				rowsPerPageTemplate="5,10,15">
 				<f:facet name="header">
 					<h:outputText value="Lista de Multas" />
+					<p:outputPanel>
+						<h:outputText value="Pesquisar:" />
+						<p:inputText id="globalFilter"
+							onkeyup="PF('multaWidget').filter()" style="width:150px"
+							placeholder="pesquisar" />
+					</p:outputPanel>
 				</f:facet>
-				<p:column headerText="Renavam">
+
+				<p:column headerText="Renavam" filterMatchMode="contains">
 					<h:outputText value="#{objeto.renavam}" />
 				</p:column>
 
-				<p:column headerText="Documento">
+				<p:column headerText="Documento" filterMatchMode="contains">
 					<h:outputText value="#{objeto.documento}" />
 				</p:column>
 
-				<p:column headerText="Data">
+				<p:column headerText="Data" filterMatchMode="contains">
 					<h:outputText value="#{objeto.datamulta}" />
 				</p:column>
 
-				<p:column headerText="Descrição">
+				<p:column headerText="Descrição"  filterMatchMode="contains">
 					<h:outputText value="#{objeto.descricao}" />
 				</p:column>
 
-				<p:column headerText="Infracao">
+				<p:column headerText="Infracao" filterMatchMode="contains">
 					<h:outputText value="#{objeto.infracao.descricao}" />
 				</p:column>
 			</p:dataTable>
 		</h:form>
 
-		<table id="percents">
+		<table class="percents">
 			<tr>
 				<th>Tipo</th>
-				<th>Total (<h:outputText value="#{multabean.qtdTotal}"></h:outputText>)</th>
+				<th>Total (<h:outputText value="#{multabean.qtdTotal}"></h:outputText>)
+				</th>
 				<th>Porcentagem</th>
 			</tr>
 			<tr>
@@ -83,6 +92,19 @@
 				<td><h:outputText value="#{multabean.levePer}%" /></td>
 			</tr>
 		</table>
+
+		<table class="percents">
+			<tr>
+				<th>Total de multas emitidas neste mês</th>
+				<th>Total de multas emitidas no mês passado</th>
+			</tr>
+			<tr>
+				<td><h:outputText value="#{multabean.mesAtual}" /></td>
+				<td><h:outputText value="#{multabean.mesPassado}" /></td>
+			</tr>
+		</table>
+
+
 	</ui:define>
 </ui:composition>
 </html>

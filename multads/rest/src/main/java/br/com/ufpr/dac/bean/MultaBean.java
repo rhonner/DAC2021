@@ -1,7 +1,10 @@
 package br.com.ufpr.dac.bean;
 
+import java.math.BigInteger;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -22,15 +25,45 @@ public class MultaBean {
 	
 	private Multa multa = new Multa();
 	private List<Multa> listagem;
+	private List<Multa> filteredMultaList;
+	
+	public List<Multa> getFilteredMultaList() {
+		return filteredMultaList;
+	}
+
+	public void setFilteredMultaList(List<Multa> filteredMultaList) {
+		this.filteredMultaList = filteredMultaList;
+	}
+
 	double gravissimaPer;
 	double gravePer;
 	double mediaPer;
 	double levePer;
-	int gravissima = 0;
-	int grave = 0;
-	int media = 0;
-	int leve = 0;
-	int qtdTotal = 0;
+	int gravissima;
+	int grave;
+	int media;
+	int leve;
+	int qtdTotal;
+	Integer mesAtual;
+	Integer mesPassado;
+	
+
+	public Integer getMesAtual() {
+		return mesAtual;
+	}
+
+	public void setMesAtual(Integer mesAtual) {
+		this.mesAtual = mesAtual;
+	}
+
+	public Integer getMesPassado() {
+		return mesPassado;
+	}
+
+	public void setMesPassado(Integer mesPassado) {
+		this.mesPassado = mesPassado;
+	}
+
 	public int getGravissima() {
 		return gravissima;
 	}
@@ -152,6 +185,7 @@ public class MultaBean {
 	
 	public void listPercent() {
 		MultaDao mdao = new MultaDao();
+		List<Integer> list = new ArrayList<Integer>();
 		for (Multa multa : mdao.getList()) {
 			int tipo = multa.getInfracao().getTipoinfracao().getId();
 			switch(tipo) {
@@ -174,5 +208,11 @@ public class MultaBean {
 		gravePer = grave * 100 / qtdTotal;
 		mediaPer = media * 100 / qtdTotal;
 		levePer = leve * 100 / qtdTotal;
+		
+		LocalDate localDate = LocalDate.now();
+		int month = localDate.getMonthValue();
+		list = mdao.getTotalMultaMonths(month);
+		mesAtual = list.get(0);
+		mesPassado = list.get(1);
 	}
 }

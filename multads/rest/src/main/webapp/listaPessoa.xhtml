@@ -11,7 +11,7 @@
 <ui:composition template="templates/baseLayout.xhtml">
 
 	<ui:define name="pageTitle">
-		<h2>Listagem de Policiais</h2>
+		<h2 class="pageT">Lista de Policiais</h2>
 		<p></p>
 	</ui:define>
 
@@ -22,7 +22,7 @@
 			<h:panelGrid columns="1" border="0">
 				<h:commandLink action="cadastroPessoa"
 					actionListener="#{pessoabean.add}">
-					<h:graphicImage value="images/add.png" width="32" height="32" />
+					<h:graphicImage value="images/addPessoa.png" width="32" height="32" /> Cadastrar Policial
 				</h:commandLink>
 			</h:panelGrid>
 
