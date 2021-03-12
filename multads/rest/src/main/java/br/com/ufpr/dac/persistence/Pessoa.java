@@ -41,7 +41,6 @@ public class Pessoa {
 	@JoinColumn(name = "idusuario")
 	private Usuario usuario;
 	
-	
 
 	public Pessoa() {}
 

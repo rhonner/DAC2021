@@ -40,6 +40,7 @@ public class Usuario {
 	@JoinColumn(name = "tipoperfil")
 	private Perfil perfil;
 	
+	
 	/*
 	 * @OneToOne(mappedBy = "usuario") private Pessoa pessoa;
 	 */

@@ -26,6 +26,7 @@ public class TipoInfracao {
 	@Column(name = "valor")
 	private float valor;
 
+	
 	/*
 	 * @OneToMany(mappedBy = "tipoinfracao",fetch = FetchType.LAZY) private
 	 * List<Infracao> infracoes;

@@ -28,6 +28,7 @@ public class Infracao {
 	@JoinColumn(name = "idtipo")
 	private TipoInfracao tipoinfracao;
 	
+	
 	/*
 	 * @OneToMany(mappedBy = "infracao") private List<Multa> multas;
 	 * 

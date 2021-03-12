@@ -30,6 +30,7 @@ public class Perfil {
 	@Column(name = "nome")
 	private String nome;
 	
+	
 	/*
 	 * @OneToMany(mappedBy = "perfil", cascade = CascadeType.ALL, fetch =
 	 * FetchType.EAGER) private List<Usuario> usuarios;

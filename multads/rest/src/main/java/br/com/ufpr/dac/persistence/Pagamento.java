@@ -32,6 +32,7 @@ public class Pagamento {
 	@JoinColumn(name = "idmulta")
 	private Multa multa;
 	
+	
 	public Pagamento() {}
 
 	public int getId() {
