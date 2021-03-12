@@ -78,3 +78,6 @@ V0.0.0.22
 
 V0.0.0.23
 - criacao de querys para busca de informações de BI para exibir nas dashboards da pagina de multas também criadas, e leves alteracoes visuais
+
+V0.0.0.24
+- alteracoes visuais, criacao de menu, correcoes ortograficas etc

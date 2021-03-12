@@ -1,102 +1,57 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:p="http://primefaces.org/ui"
-      xmlns:h="http://java.sun.com/jsf/html"> 
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:h="http://java.sun.com/jsf/html">
 
-	<h:form>
-		<ul class="list-unstyled components">
-		  <li class="active">
-			  <a href="#projectSubmenu" data-toggle="collapse" aria-expanded="false" 
-		          	class="dropdown-toggle">#{msg.sidemenu_projects}</a>
-		      	<ul class="collapse list-unstyled" id="projectSubmenu">
-		      		<li>
-		      			<h:commandLink value="titulo" action="projectList" 
-              				/>
-		      		</li>
-		      		<li>
-		      			<h:commandLink value="titulo" action="migrateProjects" 
-              				/>
-		      		</li>
-		      	</ul>
-          </li>
-		  <li>
-              <h:commandLink value="titulo" action="deviceList" 
-              	/>
-          </li>
- 		  <li>
-              <h:commandLink value="titulo" action="profileList" 
-              	actionListener="#{profileBean.modeAdmin}"
-              	/>
-          </li>
-	      <li>
-              <h:commandLink value="titulo" action="adminList" 
-              	/>
-          </li>
-          <li class="active">
-	          <a href="#personsSubmenu" data-toggle="collapse" aria-expanded="false" 
-	          	class="dropdown-toggle">titulo</a>
-	          <ul class="collapse list-unstyled show" id="personsSubmenu">
-	          	  <li>
-		              <h:commandLink value="titulo" action="personList" 
-		              	/>
-		          </li>	
-	              <li>
-		              <h:commandLink value="titulo" action="visitantList" 
-		              	/>
-		          </li>
-		          <li>
-		              <h:commandLink value="titulo" action="groupList" 
-		              	/>
-		          </li>   	
-	          </ul>
-	      </li>
-		  <li>
-              <h:commandLink value="titulo" action="passtimeList" 
-              	/>
-          </li>
-          <li class="active">
-	          <a href="#docsSubmenu" data-toggle="collapse" aria-expanded="false" 
-	          	class="dropdown-toggle">titulo</a>
-	          <ul class="collapse list-unstyled show" id="docsSubmenu">
-	          	  <li>
-		              <h:commandLink value="titulo" action="docruleList" 
-		              	/>
-		          </li>
-		          <li>
-		              <h:commandLink value="titulo" action="docsSignList" 
-		              	/>
-		          </li>
-	          </ul>
-	      </li>
-		  <li class="active">
-	          <a href="#reportsSubmenu" data-toggle="collapse" aria-expanded="false" 
-	          	class="dropdown-toggle">titulo</a>
-	          <ul class="collapse list-unstyled" id="reportsSubmenu">
-	          	  <li>
-	                  <h:commandLink value="titulo"	                  	
-	                  	action="reportAccess" 
-	                  	/>
-	              </li>
-	              <li>
-	                  <h:commandLink value="titulo"	                  	
-	                  	action="reportAccessGrouped" 
-	                  	/>
-	              </li>
-	               <li>
-	                  <h:commandLink value="titulo"	                  	
-	                  	action="reportAccessEntryExit" 
-	                  	/>
-	              </li>
-	              <li>
-	                  <h:commandLink value="titulo"	                  	
-	                  	action="reportAudit" 
-	                  	/>
-	              </li>
-	          </ul>
-	      </li>
-	  </ul>
-  </h:form>
-  
+<h:form>
+	<ul class="list-unstyled components">
+		<!-- 		  <li class="active"> -->
+		<!-- 			  <a href="#projectSubmenu" data-toggle="collapse" aria-expanded="false"  -->
+		<!-- 		          	class="dropdown-toggle">#{msg.sidemenu_projects}</a> -->
+		<!-- 		      	<ul class="collapse list-unstyled" id="projectSubmenu"> -->
+		<!-- 		      		<li> -->
+		<!-- 		      			<h:commandLink value="titulo" action="projectList"  -->
+		<!--               				/> -->
+		<!-- 		      		</li> -->
+		<!-- 		      		<li> -->
+		<!-- 		      			<h:commandLink value="titulo" action="migrateProjects"  -->
+		<!--               				/> -->
+		<!-- 		      		</li> -->
+		<!-- 		      	</ul> -->
+		<!--           </li> -->
+
+		<li class="active"><a href="#personsSubmenu"
+			data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Comando
+				Policial</a>
+			<ul class="collapse list-unstyled" id="personsSubmenu">
+				<li><h:commandLink value="Home" action="indexPessoa" /></li>
+				<li><h:commandLink value="Emitir Multa" action="emitirMulta" />
+				</li>
+			</ul></li>
+		<li class="active"><a href="#personsSubmenu1"
+			data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Policiais</a>
+			<ul class="collapse list-unstyled" id="personsSubmenu1">
+				<li><h:commandLink value="Home" action="listaPessoa" /></li>
+				<li><h:commandLink value="Novo Policial"
+						action="cadastroPessoa" /></li>
+			</ul></li>
+		<li class="active"><a href="#personsSubmenu2"
+			data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Infrações</a>
+			<ul class="collapse list-unstyled" id="personsSubmenu2">
+				<li><h:commandLink value="Home" action="listaInfracao" /></li>
+				<li><h:commandLink value="Nova Infração"
+						action="cadastroInfracao" /></li>
+			</ul></li>
+			<li class="active"><a href="#personsSubmenu3"
+			data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Tipo de Infrações</a>
+			<ul class="collapse list-unstyled" id="personsSubmenu3">
+				<li><h:commandLink value="Home" action="listaTipoInfracao" /></li>
+				<li><h:commandLink value="Novo Tipo de Infração"
+						action="cadastroInfracao" /></li>
+			</ul></li>
+	</ul>
+</h:form>
+
 </html>
