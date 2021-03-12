@@ -2,8 +2,10 @@ package br.com.ufpr.dac.persistence;
 
 import java.util.Objects;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -34,12 +36,13 @@ public class Usuario {
 	@Column(name ="senha")
 	private String senha;
 	
-	@ManyToOne()
+	@ManyToOne(cascade = CascadeType.ALL, fetch= FetchType.LAZY)
 	@JoinColumn(name = "tipoperfil")
 	private Perfil perfil;
 	
-	@OneToOne(mappedBy = "usuario")
-	private Pessoa pessoa;
+	/*
+	 * @OneToOne(mappedBy = "usuario") private Pessoa pessoa;
+	 */
 	
 	public Usuario() {}
 	
@@ -69,13 +72,11 @@ public class Usuario {
 		this.perfil = perfil;
 	}
 
-	public Pessoa getPessoa() {
-		return pessoa;
-	}
-
-	public void setPessoa(Pessoa pessoa) {
-		this.pessoa = pessoa;
-	}
+	/*
+	 * public Pessoa getPessoa() { return pessoa; }
+	 * 
+	 * public void setPessoa(Pessoa pessoa) { this.pessoa = pessoa; }
+	 */
 	
 	@Override
     public boolean equals(Object object) {
@@ -89,12 +90,12 @@ public class Usuario {
             && Objects.equals(login, other.login)
             && Objects.equals(senha, other.senha)
             && Objects.equals(perfil, other.perfil)
-            && Objects.equals(pessoa, other.pessoa);
+		/* && Objects.equals(pessoa, other.pessoa) */ ;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, login, senha, perfil, pessoa);
+        return Objects.hash(id, login, senha, perfil);
     }
 	
 }

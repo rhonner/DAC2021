@@ -30,8 +30,10 @@ public class Perfil {
 	@Column(name = "nome")
 	private String nome;
 	
-	@OneToMany(mappedBy = "perfil", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	private List<Usuario> usuarios;
+	/*
+	 * @OneToMany(mappedBy = "perfil", cascade = CascadeType.ALL, fetch =
+	 * FetchType.EAGER) private List<Usuario> usuarios;
+	 */
 	
 	@ManyToMany(targetEntity = Permissao.class,fetch = FetchType.EAGER)
 	@JoinTable(name = "perfilpermissao",
@@ -58,13 +60,11 @@ public class Perfil {
 	}
 
 
-	public List<Usuario> getUsuarios() {
-		return this.usuarios;
-	}
-
-	public void setUsuarios(List<Usuario> usuarios) {
-		this.usuarios = usuarios;
-	}
+	/*
+	 * public List<Usuario> getUsuarios() { return this.usuarios; }
+	 * 
+	 * public void setUsuarios(List<Usuario> usuarios) { this.usuarios = usuarios; }
+	 */
 
 
 
@@ -88,12 +88,12 @@ public class Perfil {
         return Objects.equals(id, other.id)
             && Objects.equals(descricao, other.descricao)
             && Objects.equals(nome, other.nome)
-            && Objects.equals(usuarios, other.usuarios)
+				/* && Objects.equals(usuarios, other.usuarios) */
             && Objects.equals(permissoes, other.permissoes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, descricao, nome, usuarios, permissoes);
+        return Objects.hash(id, descricao, nome , permissoes);
     }
 }

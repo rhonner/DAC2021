@@ -34,8 +34,10 @@ public class Multa {
 	@JoinColumn(name = "idinfracao")
 	private Infracao infracao;
 	
-	@OneToOne(mappedBy = "multa",cascade = CascadeType.ALL)
-	private Pagamento pagamento;
+	/*
+	 * @OneToOne(mappedBy = "multa",cascade = CascadeType.ALL) private Pagamento
+	 * pagamento;
+	 */
 	
 	public Multa() {}
 
