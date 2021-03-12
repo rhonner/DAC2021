@@ -70,7 +70,7 @@ public class PessoaBean {
 			Usuario user = udao.getById(pessoa.getUsuario().getId());;
 			pessoa.setUsuario(null);
 			pedao.excluir(pessoa);
-			user.setPessoa(null);
+			/* user.setPessoa(null); */
 			user.setPerfil(null);
 			udao.excluir(user);
 			setListagem(pedao.listPolices());
