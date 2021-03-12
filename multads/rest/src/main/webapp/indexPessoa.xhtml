@@ -27,29 +27,38 @@
 
 			<p />
 			<p:dataTable style="width: 100%" id="list" var="objeto"
-				value="#{multabean.listagem}" lazy="true" paginator="true" rows="10"
+				value="#{multabean.listagem}"
+				filteredValue="#{multabean.filteredMultaList}" widgetVar="multaWidget" lazy="true"
+				paginator="true" rows="5"
 				paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
 				rowsPerPageTemplate="5,10,15">
 				<f:facet name="header">
 					<h:outputText value="Lista de Multas" />
+					<p:outputPanel>
+						<h:outputText value="Pesquisar:" />
+						<p:inputText id="globalFilter"
+							onkeyup="PF('multaWidget').filter()" style="width:150px"
+							placeholder="pesquisar" />
+					</p:outputPanel>
 				</f:facet>
-				<p:column headerText="Renavam">
+
+				<p:column headerText="Renavam" filterMatchMode="contains">
 					<h:outputText value="#{objeto.renavam}" />
 				</p:column>
 
-				<p:column headerText="Documento">
+				<p:column headerText="Documento" filterMatchMode="contains">
 					<h:outputText value="#{objeto.documento}" />
 				</p:column>
 
-				<p:column headerText="Data">
+				<p:column headerText="Data" filterMatchMode="contains">
 					<h:outputText value="#{objeto.datamulta}" />
 				</p:column>
 
-				<p:column headerText="Descrição">
+				<p:column headerText="Descrição"  filterMatchMode="contains">
 					<h:outputText value="#{objeto.descricao}" />
 				</p:column>
 
-				<p:column headerText="Infracao">
+				<p:column headerText="Infracao" filterMatchMode="contains">
 					<h:outputText value="#{objeto.infracao.descricao}" />
 				</p:column>
 			</p:dataTable>
@@ -94,8 +103,8 @@
 				<td><h:outputText value="#{multabean.mesPassado}" /></td>
 			</tr>
 		</table>
-		
-		
+
+
 	</ui:define>
 </ui:composition>
 </html>

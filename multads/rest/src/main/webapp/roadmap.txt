@@ -81,3 +81,6 @@ V0.0.0.23
 
 V0.0.0.24
 - alteracoes visuais, criacao de menu, correcoes ortograficas etc
+
+V0.0.0.25
+- iniciada criacao d filtro por lista, falta terminar

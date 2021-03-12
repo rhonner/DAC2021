@@ -25,6 +25,16 @@ public class MultaBean {
 	
 	private Multa multa = new Multa();
 	private List<Multa> listagem;
+	private List<Multa> filteredMultaList;
+	
+	public List<Multa> getFilteredMultaList() {
+		return filteredMultaList;
+	}
+
+	public void setFilteredMultaList(List<Multa> filteredMultaList) {
+		this.filteredMultaList = filteredMultaList;
+	}
+
 	double gravissimaPer;
 	double gravePer;
 	double mediaPer;
