@@ -13,6 +13,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import br.com.ufpr.dac.dao.PerfilDao;
 
 @Entity
@@ -35,13 +37,14 @@ public class Usuario {
 	@Column(name ="senha")
 	private String senha;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@JsonIgnore
+	@ManyToOne()
 	@JoinColumn(name = "tipoperfil")
 	private Perfil perfil;
 	
-	/*
-	 * @OneToOne(mappedBy = "usuario") private Pessoa pessoa;
-	 */
+	
+	@OneToOne(mappedBy = "usuario") private Pessoa pessoa;
+	 
 	
 	public Usuario() {}
 	
@@ -71,11 +74,11 @@ public class Usuario {
 		this.perfil = perfil;
 	}
 
-	/*
-	 * public Pessoa getPessoa() { return pessoa; }
-	 * 
-	 * public void setPessoa(Pessoa pessoa) { this.pessoa = pessoa; }
-	 */
+	
+	public Pessoa getPessoa() { return pessoa; }
+	  
+	public void setPessoa(Pessoa pessoa) { this.pessoa = pessoa; }
+	 
 	
 	@Override
     public boolean equals(Object object) {
@@ -89,12 +92,12 @@ public class Usuario {
             && Objects.equals(login, other.login)
             && Objects.equals(senha, other.senha)
             && Objects.equals(perfil, other.perfil)
-		/* && Objects.equals(pessoa, other.pessoa) */ ;
+		 && Objects.equals(pessoa, other.pessoa);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, login, senha, perfil);
+        return Objects.hash(id, login, senha, perfil, pessoa);
     }
 	
 }
