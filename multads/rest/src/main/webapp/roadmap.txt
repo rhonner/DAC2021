@@ -99,3 +99,6 @@ V0.0.0.29
 
 V0.0.0.30
 - Criada validacoes de campos, adicao de mascaras nos campos, criados metodos para remover mascara antes de salvar no banco, alteracoes nas beans
+
+v0.0.0.31
+- Alterações na service de multa e criação do consumo da web service de usuario

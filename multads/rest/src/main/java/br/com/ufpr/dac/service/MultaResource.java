@@ -65,8 +65,13 @@ public class MultaResource {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response InserirMulta(Multa multa) {
-		multaDao.inserir(multa);
-		return Response.ok().build();
+		if(multa.getDatamulta() == null || multa.getRenavam().isEmpty() || multa.getDocumento().isEmpty()) {
+			return Response.notAcceptable(null).entity(JsonCamposNulos()).build();
+		}
+		else {
+			multaDao.inserir(multa);
+			return Response.ok().entity(JsonInsercaoRealizadaComSucesso()).build();
+		}
 	}
 	
 	@PUT
@@ -74,8 +79,13 @@ public class MultaResource {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response AlterarMulta(Multa multa) {
-		multaDao.alterar(multa);
-		return Response.ok().build();
+		if(multa.getDatamulta() == null || multa.getRenavam().isEmpty() || multa.getDocumento().isEmpty()) {
+			return Response.notAcceptable(null).entity(JsonCamposNulos()).build();
+		}
+		else {
+			multaDao.alterar(multa);
+			return Response.ok().build();			
+		}
 	}
 	
 	@DELETE
@@ -84,6 +94,9 @@ public class MultaResource {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response ExcluirMulta(@PathParam("id") int id) {
 		Multa multa = multaDao.getById(id);
+		if(multa == null) {
+			return Response.notModified().entity(JsonMultaNaoLocalizada()).build();
+		}
 		multaDao.excluir(multa);
 		return Response.ok().build();
 	}
@@ -94,5 +107,13 @@ public class MultaResource {
 
 	private String JsonInsercaoRealizadaComSucesso() {
 		return "{\"message\" : " + "\"Inserção realizada com sucesso!\"" + " }";
+	}
+	
+	private String JsonCamposNulos() {
+		return "{\"message\" : " + "\"Data da multa, documento e renavam devem ser preenchidos!\"" + " }";
+	}
+	
+	private String JsonMultaNaoLocalizada() {
+		return "{\"message\" : " + "\"Não foi possível localizar a multa a ser excluída.\"" + " }";
 	}
 }
