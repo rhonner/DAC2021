@@ -44,8 +44,8 @@
 					<h:outputText value="#{objeto.nome}" />
 				</p:column>
 
-				<p:column headerText="Documento">
-					<h:outputText value="#{objeto.documento}" />
+				<p:column headerText="CPF">
+					<h:outputText value="#{multabean.format('###.###.###-##', objeto.documento, true)}" />
 				</p:column>
 
 				<p:column headerText="Email">

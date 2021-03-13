@@ -23,18 +23,16 @@
 
 				<h:outputText value="Descricao" />
 				<p:inputText id="description"
-					value="#{infracaobean.infracao.descricao}" />
+					value="#{infracaobean.infracao.descricao}" required="true" requiredMessage="Valor obrigatório."/>
 				<p:message for="description" display="text" />
 
 				<h:outputText value="Tipos" />
 							<p:selectOneMenu id="tipoinfracao"
-								value="#{infracaobean.infracao.tipoinfracao}">
+								value="#{infracaobean.infracao.tipoinfracao}" required="true" requiredMessage="Valor obrigatório.">
 								<f:selectItem itemValue="#{null}" itemLabel="-- selecione --" />
 								<f:selectItems value="#{tipoinfracaobean.list}" var="tppinfracao"
 									itemLabel="#{tppinfracao.descricao}" itemValue="#{tppinfracao}" />
 							</p:selectOneMenu>
-
-
 			</h:panelGrid>
 
 			<p />

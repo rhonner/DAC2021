@@ -33,8 +33,7 @@
 				globalFilterFunction="#{multabean.globalFilterFunction}"
 				lazy="false" paginator="true" rows="5"
 				paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
-				paginatorPosition="bottom"
-				rowsPerPageTemplate="5,10,15">
+				paginatorPosition="bottom" rowsPerPageTemplate="5,10,15">
 				<f:facet name="header">
 					<h:outputText value="Lista de Multas" />
 					<p:outputPanel>
@@ -45,23 +44,36 @@
 					</p:outputPanel>
 				</f:facet>
 
-				<p:column headerText="Renavam" filterBy="#{objeto.renavam}" filterMatchMode="contains" filterStyle="display:none; visibility:hidden;">
+				<p:column headerText="Renavam" filterBy="#{objeto.renavam}"
+					filterMatchMode="contains"
+					filterStyle="display:none; visibility:hidden;">
 					<h:outputText value="#{objeto.renavam}" />
 				</p:column>
 
-				<p:column headerText="Documento" filterBy="#{objeto.documento}" filterMatchMode="contains" filterStyle="display:none; visibility:hidden;">
-					<h:outputText value="#{objeto.documento}" />
+				<p:column headerText="CPF" filterBy="#{objeto.documento}"
+					filterMatchMode="contains"
+					filterStyle="display:none; visibility:hidden;">
+					<h:outputText value="#{multabean.format('###.###.###-##', objeto.documento, true)}">
+					</h:outputText>
 				</p:column>
 
-				<p:column headerText="Data" filterBy="#{objeto.datamulta}" filterMatchMode="contains" filterStyle="display:none; visibility:hidden;">
-					<h:outputText value="#{objeto.datamulta}" />
+				<p:column headerText="Data" filterBy="#{objeto.datamulta}"
+					filterMatchMode="contains"
+					filterStyle="display:none; visibility:hidden;">
+					<h:outputText value="#{objeto.datamulta}">
+						<f:convertDateTime pattern="dd/MM/yyyy HH:mm" />
+					</h:outputText>
 				</p:column>
 
-				<p:column headerText="Descrição" filterBy="#{objeto.descricao}" filterMatchMode="contains" filterStyle="display:none; visibility:hidden;">
+				<p:column headerText="Descrição" filterBy="#{objeto.descricao}"
+					filterMatchMode="contains"
+					filterStyle="display:none; visibility:hidden;">
 					<h:outputText value="#{objeto.descricao}" />
 				</p:column>
 
-				<p:column headerText="Infracao" filterBy="#{objeto.infracao.descricao}" filterMatchMode="contains" filterStyle="display:none; visibility:hidden;">
+				<p:column headerText="Infracao"
+					filterBy="#{objeto.infracao.descricao}" filterMatchMode="contains"
+					filterStyle="display:none; visibility:hidden;">
 					<h:outputText value="#{objeto.infracao.descricao}" />
 				</p:column>
 			</p:dataTable>

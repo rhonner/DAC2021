@@ -31,7 +31,7 @@ public class InfracaoBean {
 		this.tpinfracao = tpinfracao;
 	}
 
-	private void refresh() {
+	public void refresh() {
 		InfracaoDao tidao = new InfracaoDao();
 		setListagem(tidao.getList());
 	}

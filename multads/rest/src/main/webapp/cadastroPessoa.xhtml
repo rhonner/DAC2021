@@ -22,25 +22,25 @@
 			<h:panelGrid columns="3" border="0">
 
 				<h:outputText value="Login" />
-				<p:inputText id="login" value="#{pessoabean.pessoa.usuario.login}" />
+				<p:inputText id="login" value="#{pessoabean.pessoa.usuario.login}" required="true" requiredMessage="Valor obrigatório."/>
 				<p:message for="login" display="text" />
 				
 				<h:outputText value="Senha" />
-				<p:inputText id="senha" type="password" value="#{pessoabean.pessoa.usuario.senha}" />
+				<p:inputText id="senha" type="password" value="#{pessoabean.pessoa.usuario.senha}" required="true" requiredMessage="Valor obrigatório." />
 				<p:message for="senha" display="text" />
 
 				<h:outputText value="Nome" />
-				<p:inputText id="nome" value="#{pessoabean.pessoa.nome}" />
+				<p:inputText id="nome" value="#{pessoabean.pessoa.nome}" required="true" requiredMessage="Valor obrigatório."/>
 				<p:message for="nome" display="text" />
 
 
 				<h:outputText value="Email" />
-				<p:inputText id="email" value="#{pessoabean.pessoa.email}" />
+				<p:inputText id="email" value="#{pessoabean.pessoa.email}" required="true" requiredMessage="Valor obrigatório." />
 				<p:message for="email" display="text" />
 
 
 				<h:outputText value="CPF" />
-				<p:inputText id="cpf" value="#{pessoabean.pessoa.documento}" />
+				<p:inputText id="cpf" value="#{pessoabean.pessoa.documento}" required="true" requiredMessage="Valor obrigatório."/>
 				<p:message for="cpf" display="text" />
 
 			</h:panelGrid>

@@ -22,19 +22,19 @@
 			<h:panelGrid columns="3" border="0">
 
 				<h:outputText value="Descricao" />
-				<p:inputText id="description"
-					value="#{tipoinfracaobean.tpinfracao.descricao}" />
+				<p:inputText id="description" 
+					value="#{tipoinfracaobean.tpinfracao.descricao}" required="true" requiredMessage="Valor obrigatório." />
 				<p:message for="description" display="text" />
 
 				<h:outputText value="Pontuacao" />
 				<p:inputNumber id="pontuacao"
-					value="#{tipoinfracaobean.tpinfracao.pontuacao}" />
+					value="#{tipoinfracaobean.tpinfracao.pontuacao}" required="true" requiredMessage="Valor obrigatório."/>
 				<p:message for="pontuacao" display="text" />
 
 
 				<h:outputText value="Valor" />
 				<p:inputNumber id="valor"
-					value="#{tipoinfracaobean.tpinfracao.valor}" />
+					value="#{tipoinfracaobean.tpinfracao.valor}" required="true" requiredMessage="Valor obrigatório."	/>
 				<p:message for="valor" display="text" />
 
 

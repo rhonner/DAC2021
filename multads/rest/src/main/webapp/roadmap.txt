@@ -96,3 +96,6 @@ V0.0.0.28
 
 V0.0.0.29
 - Criado filtro na tela de multas ( para aplicar na tela de condutores que será criada)
+
+V0.0.0.30
+- Criada validacoes de campos, adicao de mascaras nos campos, criados metodos para remover mascara antes de salvar no banco, alteracoes nas beans

@@ -22,19 +22,19 @@
 			<h:panelGrid columns="3" border="0">
 
 				<h:outputText value="Renavam" />
-				<p:inputText id="renavam" value="#{multabean.multa.renavam}" />
+				<p:inputText id="renavam" value="#{multabean.multa.renavam}" required="true" requiredMessage="Valor obrigatório."/>
 				<p:message for="renavam" display="text" />
 
 				<h:outputText value="CPF" />
-				<p:inputText id="cpf" value="#{multabean.multa.documento}" />
+				<p:inputMask id="cpf" value="#{multabean.multa.documento}" mask="999.999.999-99" required="true" requiredMessage="Valor obrigatório."/>
 				<p:message for="cpf" display="text" />
 
 				<h:outputText value="Descrição" />
-				<p:inputText id="descricao" value="#{multabean.multa.descricao}" />
+				<p:inputText id="descricao" value="#{multabean.multa.descricao}" required="true" requiredMessage="Valor obrigatório."/>
 				<p:message for="descricao" display="text" />
 
 				<h:outputText value="Infração" />
-				<p:selectOneMenu id="infracao" value="#{multabean.multa.infracao}">
+				<p:selectOneMenu id="infracao" value="#{multabean.multa.infracao}" required="true" requiredMessage="Valor obrigatório.">
 					<f:selectItem itemValue="#{null}" itemLabel="-- selecione --" />
 					<f:selectItems value="#{infracaobean.listagem}" var="iinfracao"
 						itemLabel="#{iinfracao.descricao}" itemValue="#{iinfracao}" />

@@ -13,6 +13,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.security.auth.x500.X500Principal;
+import javax.swing.text.MaskFormatter;
 
 import org.primefaces.PrimeFaces;
 import org.primefaces.model.FilterMeta;
@@ -30,7 +31,7 @@ public class MultaBean {
 	private List<Multa> filteredMultaList;
 
 	private List<FilterMeta> filterBy;
-	
+
 	public List<Multa> getFilteredMultaList() {
 		return filteredMultaList;
 	}
@@ -165,6 +166,7 @@ public class MultaBean {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 		multa.setDatamulta(Timestamp.valueOf(sdf.format(System.currentTimeMillis())));
 		System.out.println(multa);
+		multa.setDocumento(removeMask(multa.getDocumento()));
 		mdao.inserir(multa);
 		refresh();
 	}
@@ -175,7 +177,7 @@ public class MultaBean {
 		multa = new Multa();
 		setListagem(mdao.getListDesc());
 		listPercent();
-		
+
 //		 filterBy = new ArrayList<>();
 
 	}
@@ -230,7 +232,7 @@ public class MultaBean {
 		int filterInt = getInteger(filterText);
 
 		Multa multa = (Multa) value;
-		return 	   multa.getRenavam().toLowerCase().contains(filterText)
+		return multa.getRenavam().toLowerCase().contains(filterText)
 				|| multa.getDescricao().toLowerCase().contains(filterText)
 				|| multa.getDatamulta().toString().toLowerCase().contains(filterText)
 				|| multa.getDocumento().toLowerCase().contains(filterText)
@@ -243,5 +245,24 @@ public class MultaBean {
 		} catch (NumberFormatException ex) {
 			return 0;
 		}
+	}
+
+	public String format(String pattern, Object value, boolean suppressZero) {
+		if (!suppressZero || Double.parseDouble(value.toString()) != 0) {
+			MaskFormatter mask;
+			try {
+				mask = new MaskFormatter(pattern);
+				mask.setValueContainsLiteralCharacters(false);
+				return mask.valueToString(value);
+			} catch (Exception e) {
+				throw new RuntimeException(e);
+			}
+		} else {
+			return "";
+		}
+	}
+
+	public String removeMask(String str) {
+		return str.replaceAll("\\D", "");
 	}
 }

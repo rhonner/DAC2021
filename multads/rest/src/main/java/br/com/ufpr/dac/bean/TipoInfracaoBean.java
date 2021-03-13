@@ -31,7 +31,7 @@ public class TipoInfracaoBean {
 		TipoInfracaoDao tidao = new TipoInfracaoDao();
 		return tidao.getList();
 	}
-	private void refresh() {
+	public void refresh() {
 		TipoInfracaoDao tidao = new TipoInfracaoDao();
 		listagem = tidao.getList();
 	}
