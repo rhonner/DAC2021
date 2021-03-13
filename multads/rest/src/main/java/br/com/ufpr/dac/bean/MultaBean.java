@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
@@ -14,18 +15,21 @@ import javax.faces.bean.SessionScoped;
 import javax.security.auth.x500.X500Principal;
 
 import org.primefaces.PrimeFaces;
+import org.primefaces.model.FilterMeta;
+import org.primefaces.util.LangUtils;
 
 import br.com.ufpr.dac.dao.MultaDao;
 import br.com.ufpr.dac.persistence.Multa;
 
-
 @SessionScoped
 @ManagedBean(name = "multabean")
 public class MultaBean {
-	
+
 	private Multa multa = new Multa();
 	private List<Multa> listagem;
 	private List<Multa> filteredMultaList;
+
+	private List<FilterMeta> filterBy;
 	
 	public List<Multa> getFilteredMultaList() {
 		return filteredMultaList;
@@ -46,7 +50,6 @@ public class MultaBean {
 	int qtdTotal;
 	Integer mesAtual;
 	Integer mesPassado;
-	
 
 	public Integer getMesAtual() {
 		return mesAtual;
@@ -158,7 +161,7 @@ public class MultaBean {
 	}
 
 	public void save() {
-		MultaDao mdao = new MultaDao();	
+		MultaDao mdao = new MultaDao();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 		multa.setDatamulta(Timestamp.valueOf(sdf.format(System.currentTimeMillis())));
 		System.out.println(multa);
@@ -172,6 +175,9 @@ public class MultaBean {
 		multa = new Multa();
 		setListagem(mdao.getListDesc());
 		listPercent();
+		
+//		 filterBy = new ArrayList<>();
+
 	}
 
 	public void add() {
@@ -182,25 +188,25 @@ public class MultaBean {
 		MultaDao mdao = new MultaDao();
 		return mdao.getListDesc();
 	}
-	
+
 	public void listPercent() {
 		MultaDao mdao = new MultaDao();
 		List<Integer> list = new ArrayList<Integer>();
 		for (Multa multa : mdao.getList()) {
 			int tipo = multa.getInfracao().getTipoinfracao().getId();
-			switch(tipo) {
-			  case 1:
+			switch (tipo) {
+			case 1:
 				gravissima++;
-			    break;
-			  case 2:
-			    grave++;
-			    break;
-			  case 3:
-				 media++;
-				 break;
-			  case 4:
-				 leve++;
-				 break;
+				break;
+			case 2:
+				grave++;
+				break;
+			case 3:
+				media++;
+				break;
+			case 4:
+				leve++;
+				break;
 			}
 			qtdTotal++;
 		}
@@ -208,11 +214,34 @@ public class MultaBean {
 		gravePer = grave * 100 / qtdTotal;
 		mediaPer = media * 100 / qtdTotal;
 		levePer = leve * 100 / qtdTotal;
-		
+
 		LocalDate localDate = LocalDate.now();
 		int month = localDate.getMonthValue();
 		list = mdao.getTotalMultaMonths(month);
 		mesAtual = list.get(0);
 		mesPassado = list.get(1);
+	}
+
+	public boolean globalFilterFunction(Object value, Object filter, Locale locale) {
+		String filterText = (filter == null) ? null : filter.toString().trim().toLowerCase();
+		if (LangUtils.isValueBlank(filterText)) {
+			return true;
+		}
+		int filterInt = getInteger(filterText);
+
+		Multa multa = (Multa) value;
+		return 	   multa.getRenavam().toLowerCase().contains(filterText)
+				|| multa.getDescricao().toLowerCase().contains(filterText)
+				|| multa.getDatamulta().toString().toLowerCase().contains(filterText)
+				|| multa.getDocumento().toLowerCase().contains(filterText)
+				|| multa.getInfracao().getDescricao().toLowerCase().contains(filterText);
+	}
+
+	private int getInteger(String string) {
+		try {
+			return Integer.parseInt(string);
+		} catch (NumberFormatException ex) {
+			return 0;
+		}
 	}
 }
