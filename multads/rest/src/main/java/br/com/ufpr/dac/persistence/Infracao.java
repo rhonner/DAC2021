@@ -15,6 +15,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "infracao")
 public class Infracao {
@@ -23,21 +25,25 @@ public class Infracao {
 	private int id;
 	@Column(name = "descricao")
 	private String descricao;
-	
-	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "idtipo")
 	private TipoInfracao tipoinfracao;
-	
-	
-	/*
-	 * @OneToMany(mappedBy = "infracao") private List<Multa> multas;
-	 * 
-	 * public Infracao() {}
-	 * 
-	 * public List<Multa> getMultas() { return multas; }
-	 * 
-	 * public void setMultas(List<Multa> multas) { this.multas = multas; }
-	 */
+
+	@JsonIgnore
+	@OneToMany(mappedBy = "infracao")
+	private List<Multa> multas;
+
+	public Infracao() {
+	}
+
+	public List<Multa> getMultas() {
+		return multas;
+	}
+
+	public void setMultas(List<Multa> multas) {
+		this.multas = multas;
+	}
 
 	public TipoInfracao getTipoinfracao() {
 		return tipoinfracao;
@@ -46,7 +52,6 @@ public class Infracao {
 	public void setTipoinfracao(TipoInfracao tipoinfracao) {
 		this.tipoinfracao = tipoinfracao;
 	}
-
 
 	public int getId() {
 		return id;
@@ -65,22 +70,23 @@ public class Infracao {
 	}
 
 	@Override
-    public boolean equals(Object object) {
-        // Basic checks.
-        if (object == this) return true;
-        if (!(object instanceof Infracao)) return false;
+	public boolean equals(Object object) {
+		// Basic checks.
+		if (object == this)
+			return true;
+		if (!(object instanceof Infracao))
+			return false;
 
-        // Property checks.
-        Infracao other = (Infracao) object;
-        return Objects.equals(id, other.id)
-            && Objects.equals(tipoinfracao, other.tipoinfracao)
-            && Objects.equals(descricao, other.descricao);
+		// Property checks.
+		Infracao other = (Infracao) object;
+		return Objects.equals(id, other.id) && Objects.equals(tipoinfracao, other.tipoinfracao)
+				&& Objects.equals(descricao, other.descricao);
 
-    }
+	}
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, tipoinfracao, descricao);
-    }
-	
+	@Override
+	public int hashCode() {
+		return Objects.hash(id, tipoinfracao, descricao);
+	}
+
 }

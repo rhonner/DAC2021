@@ -12,10 +12,12 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "tipoinfracao")
 public class TipoInfracao {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
@@ -26,18 +28,20 @@ public class TipoInfracao {
 	@Column(name = "valor")
 	private float valor;
 
-	
-	/*
-	 * @OneToMany(mappedBy = "tipoinfracao",fetch = FetchType.LAZY) private
-	 * List<Infracao> infracoes;
-	 * 
-	 * 
-	 * public List<Infracao> getInfracoes() { return infracoes; }
-	 * 
-	 * public void setInfracoes(List<Infracao> infracoes) { this.infracoes =
-	 * infracoes; }
-	 */
-	public TipoInfracao() {}
+	@JsonIgnore
+	@OneToMany(mappedBy = "tipoinfracao", fetch = FetchType.LAZY)
+	private List<Infracao> infracoes;
+
+	public List<Infracao> getInfracoes() {
+		return infracoes;
+	}
+
+	public void setInfracoes(List<Infracao> infracoes) {
+		this.infracoes = infracoes;
+	}
+
+	public TipoInfracao() {
+	}
 
 	public int getId() {
 		return id;
@@ -70,26 +74,24 @@ public class TipoInfracao {
 	public void setValor(float valor) {
 		this.valor = valor;
 	}
-	
+
 	@Override
-    public boolean equals(Object object) {
-        // Basic checks.
-        if (object == this) return true;
-        if (!(object instanceof TipoInfracao)) return false;
+	public boolean equals(Object object) {
+		// Basic checks.
+		if (object == this)
+			return true;
+		if (!(object instanceof TipoInfracao))
+			return false;
 
-        // Property checks.
-        TipoInfracao other = (TipoInfracao) object;
-        return Objects.equals(id, other.id)
-            && Objects.equals(descricao, other.descricao)
-            && Objects.equals(pontuacao, other.pontuacao)
-            && Objects.equals(valor, other.valor);
-    }
+		// Property checks.
+		TipoInfracao other = (TipoInfracao) object;
+		return Objects.equals(id, other.id) && Objects.equals(descricao, other.descricao)
+				&& Objects.equals(pontuacao, other.pontuacao) && Objects.equals(valor, other.valor);
+	}
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, descricao, pontuacao, valor);
-    }
-	
-	
-	
+	@Override
+	public int hashCode() {
+		return Objects.hash(id, descricao, pontuacao, valor);
+	}
+
 }

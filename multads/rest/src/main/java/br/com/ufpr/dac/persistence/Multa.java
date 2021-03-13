@@ -14,7 +14,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-
 @Entity
 @Table(name = "multa")
 public class Multa {
@@ -29,18 +28,16 @@ public class Multa {
 	private Timestamp datamulta;
 	@Column(name = "descricao")
 	private String descricao;
-	
+
 	@ManyToOne()
 	@JoinColumn(name = "idinfracao")
 	private Infracao infracao;
-	
-	
-	/*
-	 * @OneToOne(mappedBy = "multa",cascade = CascadeType.ALL) private Pagamento
-	 * pagamento;
-	 */
-	
-	public Multa() {}
+
+	@OneToOne(mappedBy = "multa", cascade = CascadeType.ALL)
+	private Pagamento pagamento;
+
+	public Multa() {
+	}
 
 	public int getId() {
 		return id;
@@ -91,24 +88,23 @@ public class Multa {
 	}
 
 	@Override
-    public boolean equals(Object object) {
-        // Basic checks.
-        if (object == this) return true;
-        if (!(object instanceof Multa)) return false;
+	public boolean equals(Object object) {
+		// Basic checks.
+		if (object == this)
+			return true;
+		if (!(object instanceof Multa))
+			return false;
 
-        // Property checks.
-        Multa other = (Multa) object;
-        return Objects.equals(id, other.id)
-            && Objects.equals(renavam, other.renavam)
-            && Objects.equals(documento, other.documento)
-            && Objects.equals(datamulta, other.datamulta)
-            && Objects.equals(descricao, other.descricao)
-            && Objects.equals(infracao, other.infracao);
-    }
+		// Property checks.
+		Multa other = (Multa) object;
+		return Objects.equals(id, other.id) && Objects.equals(renavam, other.renavam)
+				&& Objects.equals(documento, other.documento) && Objects.equals(datamulta, other.datamulta)
+				&& Objects.equals(descricao, other.descricao) && Objects.equals(infracao, other.infracao);
+	}
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, renavam, documento, datamulta, descricao, infracao);
-    }
-	
+	@Override
+	public int hashCode() {
+		return Objects.hash(id, renavam, documento, datamulta, descricao, infracao);
+	}
+
 }
