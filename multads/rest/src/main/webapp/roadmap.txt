@@ -117,3 +117,6 @@ v0.0.0.35
 
 v0.0.0.36
 - veiculoimpl retornando veiculo por pesquisa de placa
+
+v0.0.0.37
+- metodo de retornar lista de multas por renavam
