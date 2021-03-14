@@ -111,3 +111,6 @@ v0.0.0.33
 
 v0.0.0.34
 - Data corrigida index Policial
+
+v0.0.0.35
+- responseimpl de condutor retornando tudo, listagem e listagem dinamica por documento ou email ou nome

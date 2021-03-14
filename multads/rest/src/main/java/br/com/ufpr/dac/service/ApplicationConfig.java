@@ -26,5 +26,7 @@ public class ApplicationConfig extends Application {
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
         resources.add(MultaResource.class);
+        resources.add(InfracaoResource.class);
+        resources.add(PagamentoResource.class);
     }
 }

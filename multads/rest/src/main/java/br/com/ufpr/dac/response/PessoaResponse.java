@@ -131,12 +131,13 @@ public class PessoaResponse {
             && Objects.equals(documento, other.documento)
             && Objects.equals(nome, other.nome)
             && Objects.equals(email, other.email)
+            && Objects.equals(veiculos, other.veiculos)
             && Objects.equals(usuario, other.usuario);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, documento, nome, email, usuario);
+        return Objects.hash(id, documento, nome, email, usuario,veiculos);
     }
 
 	

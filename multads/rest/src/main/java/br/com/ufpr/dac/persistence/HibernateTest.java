@@ -5,18 +5,19 @@ import java.util.List;
 import org.hibernate.Session;
 
 import br.com.ufpr.dac.dao.PessoaDao;
+import br.com.ufpr.dac.impl.PessoaImpl;
+import br.com.ufpr.dac.response.PessoaResponse;
 import br.com.ufpr.dac.dao.PessoaDao;
 import br.com.ufpr.dac.util.HibernateUtil;
 
 public class HibernateTest {
 
-public static void main(String[] args) {
-         
-        Session session = HibernateUtil.getSessionFactory().openSession();
- 
-        session.beginTransaction();
+	public static void main(String[] args) {
 
-        
+		Session session = HibernateUtil.getSessionFactory().openSession();
+
+		session.beginTransaction();
+
 		/*
 		 * PessoaDao mdao = new PessoaDao(); PerfilDao pdao = new PerfilDao();
 		 * 
@@ -27,20 +28,28 @@ public static void main(String[] args) {
 		 * mdao.inserir(m);
 		 */
 		/*
-		 * PessoaDao pdao = new PessoaDao(); List <Pessoa> lista = pdao.getList(); Pessoa p
-		 * = lista.get(0);
+		 * PessoaDao pdao = new PessoaDao(); List <Pessoa> lista = pdao.getList();
+		 * Pessoa p = lista.get(0);
 		 */
-        
-        PessoaDao mdao = new PessoaDao();
-        List<Pessoa>plist = mdao.getList("1");
-        for (Pessoa Pessoa : plist) {
-            System.out.println(Pessoa);
-         
-        
+
+		PessoaDao mdao = new PessoaDao();
+
+		PessoaImpl p = new PessoaImpl();
+		List<PessoaResponse> plist = p.getListaPessoaGenericSearch("antelectus");
+		for (PessoaResponse pessoa : plist) {
+			System.out.println(pessoa);
 
 		}
-        
 
-    }
-   
+		/*
+		 * List<Pessoa>plist = mdao.getExemplo("ri"); for (Pessoa pessoa : plist) {
+		 * System.out.println(pessoa);
+		 * 
+		 * 
+		 * 
+		 * }
+		 */
+
+	}
+
 }

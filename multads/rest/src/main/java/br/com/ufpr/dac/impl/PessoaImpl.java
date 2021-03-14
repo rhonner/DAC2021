@@ -27,6 +27,19 @@ public class PessoaImpl {
 		}
 	}
 
+	public List<PessoaResponse> getListaPessoaGenericSearch(String search) {
+		ResponseConfiguration responseConfig = new ResponseConfiguration(path + '/' +"genericSearch"+'/'+ search);
+		Response response = responseConfig.getClient().get();
+		if (response.getStatus() == 200) {
+			List<PessoaResponse> retorno = response.readEntity(new GenericType<List<PessoaResponse>>() {
+			});
+			return retorno;
+		} else {
+			String retorno = response.readEntity(String.class);
+			return null;
+		}
+	}
+	
 	public PessoaResponse getPessoa(int id) {
 		ResponseConfiguration responseConfig = new ResponseConfiguration(path + '/' + id);
 		Response response = responseConfig.getClient().get();

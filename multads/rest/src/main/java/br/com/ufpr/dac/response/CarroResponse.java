@@ -15,11 +15,12 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 
 public class CarroResponse {
 	private int id;
 	private String descricao;
-	
 	private MarcaResponse marca;
 
 	public CarroResponse() {}

@@ -97,6 +97,6 @@ public class Perfil {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, descricao, nome , permissoes, usuarios);
+        return Objects.hash(id, descricao, nome , permissoes);
     }
 }

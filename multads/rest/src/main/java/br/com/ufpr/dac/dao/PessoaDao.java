@@ -35,6 +35,29 @@ public class PessoaDao extends PersistenceDao<Pessoa>{
         
     }
     
+	public List<Pessoa> getExemplo(String search){
+		List<Pessoa> lista = new ArrayList();
+
+        String sqlScript = "select * from pessoa where nome like ? or documento like ? or email like ?;";
+        Session session = sessionBuilder.getSession();
+        
+        SQLQuery qr = session.createSQLQuery(sqlScript);
+        qr.setParameter(0, "%"+search+"%");
+        UsuarioDao udao = new UsuarioDao();
+        Pessoa ev;
+        List<Object[]> objLst = qr.list();
+        if (!objLst.isEmpty()) {
+            for (Object[] obj : objLst) {
+                ev = new Pessoa(
+                        (int) obj[0], (String) obj[1],
+                        (String) obj[2], (String) obj[3],  udao.getById((int)obj[4]));
+                lista.add(ev);
+            }
+        }
+        return lista;
+	}
+	
+	
     public List<Pessoa>getList(){
     	
     	return getList(Order.asc("id"));
