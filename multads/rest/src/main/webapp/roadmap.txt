@@ -114,3 +114,6 @@ v0.0.0.34
 
 v0.0.0.35
 - responseimpl de condutor retornando tudo, listagem e listagem dinamica por documento ou email ou nome
+
+v0.0.0.36
+- veiculoimpl retornando veiculo por pesquisa de placa

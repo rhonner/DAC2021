@@ -39,6 +39,18 @@ public class VeiculoImpl {
 		}
 	}
 
+	public VeiculoResponse getVeiculoByPlaca(String search) {
+		ResponseConfiguration responseConfig = new ResponseConfiguration(path + '/'+"placa"+'/' + search);
+		Response response = responseConfig.getClient().get();
+		if (response.getStatus() == 200) {
+			VeiculoResponse retorno = response.readEntity(VeiculoResponse.class);
+			return retorno;
+		} else {
+			String retorno = response.readEntity(String.class);
+			return null;
+		}
+	}
+	
 	public Boolean inserirVeiculo(VeiculoResponse veiculo) {
 		ResponseConfiguration responseConfig = new ResponseConfiguration(path + "/inserir");
 		if (!veiculo.getChassi().isEmpty() && !veiculo.getPlaca().isEmpty() && !veiculo.getRenavam().isEmpty()) {
