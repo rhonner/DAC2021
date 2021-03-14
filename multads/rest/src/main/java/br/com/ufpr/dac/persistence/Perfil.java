@@ -17,6 +17,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity
 @Table(name = "perfil")
@@ -31,7 +33,7 @@ public class Perfil {
 	private String nome;
 	
 	
-	
+	@JsonIgnore
 	@OneToMany(mappedBy = "perfil", cascade = CascadeType.ALL, fetch = FetchType.LAZY) 
 	private List<Usuario> usuarios;
 	 

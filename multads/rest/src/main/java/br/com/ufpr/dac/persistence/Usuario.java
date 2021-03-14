@@ -37,13 +37,13 @@ public class Usuario {
 	@Column(name ="senha")
 	private String senha;
 	
-	@JsonIgnore
+
 	@ManyToOne()
 	@JoinColumn(name = "tipoperfil")
 	private Perfil perfil;
-	
-	
-	@OneToOne(mappedBy = "usuario") private Pessoa pessoa;
+
+	@OneToOne(mappedBy = "usuario") 
+	private Pessoa pessoa;
 	 
 	
 	public Usuario() {}
