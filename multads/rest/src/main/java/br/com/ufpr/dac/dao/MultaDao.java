@@ -64,6 +64,8 @@ public class MultaDao extends PersistenceDao<Multa>{
         return getList(ctrnDescription, Order.asc("id"));
     }
     
+    
+    
     public List<Multa>getListByRenavam(String search){
     	Criterion ctrnDescription = Restrictions.like("renavam", search).ignoreCase();
         return getList(ctrnDescription, Order.asc("id"));

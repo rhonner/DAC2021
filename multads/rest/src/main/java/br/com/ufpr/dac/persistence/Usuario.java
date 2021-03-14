@@ -42,7 +42,7 @@ public class Usuario {
 	@JoinColumn(name = "tipoperfil")
 	private Perfil perfil;
 
-	@OneToOne(mappedBy = "usuario") 
+	@OneToOne(mappedBy = "usuario",cascade = CascadeType.ALL) 
 	private Pessoa pessoa;
 	 
 	

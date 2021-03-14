@@ -39,6 +39,18 @@ public class VeiculoImpl {
 		}
 	}
 
+	public VeiculoResponse getVeiculoByRenavam(String search) {
+		ResponseConfiguration responseConfig = new ResponseConfiguration(path + '/'+"renavam"+'/' + search);
+		Response response = responseConfig.getClient().get();
+		if (response.getStatus() == 200) {
+			VeiculoResponse retorno = response.readEntity(VeiculoResponse.class);
+			return retorno;
+		} else {
+			String retorno = response.readEntity(String.class);
+			return null;
+		}
+	}
+	
 	public VeiculoResponse getVeiculoByPlaca(String search) {
 		ResponseConfiguration responseConfig = new ResponseConfiguration(path + '/'+"placa"+'/' + search);
 		Response response = responseConfig.getClient().get();

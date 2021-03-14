@@ -51,7 +51,7 @@ public class HibernateTest {
 
 
 		VeiculoImpl p = new VeiculoImpl();
-		VeiculoResponse ps = p.getVeiculoByPlaca("RKE2534");
+		VeiculoResponse ps = p.getVeiculoByRenavam("44609582799");
 		System.out.println(ps);
 		
 		/*
