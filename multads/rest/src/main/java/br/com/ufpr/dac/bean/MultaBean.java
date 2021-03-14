@@ -1,23 +1,17 @@
 package br.com.ufpr.dac.bean;
 
-import java.math.BigInteger;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-import java.util.TimeZone;
 
 import javax.annotation.PostConstruct;
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.security.auth.x500.X500Principal;
 import javax.swing.text.MaskFormatter;
 
-import org.primefaces.PrimeFaces;
-import org.primefaces.model.FilterMeta;
 import org.primefaces.util.LangUtils;
 
 import br.com.ufpr.dac.dao.MultaDao;

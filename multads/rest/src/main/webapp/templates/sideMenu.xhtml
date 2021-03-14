@@ -36,7 +36,7 @@
 			<ul class="collapse list-unstyled" id="personsSubmenu1">
 				<li><h:commandLink value="Home" action="listaPessoa" actionListener="#{pessoabean.refresh}" /></li>
 				<li><h:commandLink value="Novo Policial" action="cadastroPessoa" actionListener="#{pessoabean.add}" /></li>
-				<li><h:commandLink value="Pesquisar Condutor" action="pesquisarCondutor" /></li>
+				<li><h:commandLink value="Pesquisar Condutor" action="pesquisarCondutor" actionListener="#{condutorbean.add}"/></li>
 			</ul></li>
 		<li class="active"><a href="#personsSubmenu2"
 			data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Infrações</a>

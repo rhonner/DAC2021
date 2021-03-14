@@ -20,42 +20,51 @@
 		<h:form id="formList">
 			<p />
 			<p:dataTable style="width: 100%" id="list" var="objeto"
-				value="#{pessoabean.listagem}" lazy="true" paginator="true"
-				rows="10"
+				value="#{condutorbean.listagem}"
+				filteredValue="#{condutorbean.filteredListagem}"
+				widgetVar="condutorWidget"
+				globalFilterFunction="#{condutorbean.globalFilterFunction}"
+				lazy="false" paginator="true" rows="10"
 				paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
-				paginatorPosition="bottom"
-				rowsPerPageTemplate="5,10,15">
+				paginatorPosition="bottom" rowsPerPageTemplate="5,10,15">
 				<f:facet name="header">
-					<h:outputText value="listagem de Policiais" />
+					<h:outputText value="Condutores" />
+					<p:outputPanel>
+						<h:outputText value="Pesquisar:" />
+						<p:remoteCommand name="initializeList"
+							actionListener="#{condutorbean.initializeList}" />
+						<p:inputText id="globalFilter"
+							onkeyup="if (event.keyCode === 13){ initializeList(); PF('condutorWidget').filter();}"
+							style="width:150px" placeholder="pesquisar" />
+					</p:outputPanel>
 				</f:facet>
-				<p:column headerText="Id">
-					<h:outputText value="#{objeto.id}" />
-				</p:column>
-
-				<p:column headerText="Nome">
-					<h:outputText value="#{objeto.nome}" />
-				</p:column>
-
-				<p:column headerText="Documento">
+				<p:column headerText="CPF" filterBy="#{objeto.documento}"
+					filterMatchMode="contains"
+					filterStyle="display:none; visibility:hidden;">
 					<h:outputText value="#{objeto.documento}" />
 				</p:column>
 
-				<p:column headerText="Email">
+				<p:column headerText="Nome" filterBy="#{objeto.nome}"
+					filterMatchMode="contains"
+					filterStyle="display:none; visibility:hidden;">
+					<h:outputText value="#{objeto.nome}" />
+				</p:column>
+
+				<p:column headerText="E-mail" filterBy="#{objeto.email}"
+					filterMatchMode="contains"
+					filterStyle="display:none; visibility:hidden;">
 					<h:outputText value="#{objeto.email}" />
 				</p:column>
 
-				<p:column headerText="Ações">
+				<p:column headerText="Detalhes">
 
 					<h:commandLink immediate="true" action="cadastroPessoa">
-						<h:graphicImage value="images/edit.png" width="32" height="32" />
+						<h:graphicImage value="images/cnh.png" width="32" height="32" /> 
 						<f:setPropertyActionListener value="#{objeto}"
 							target="#{pessoabean.pessoa}" />
 					</h:commandLink>
 
 				</p:column>
-
-
-
 			</p:dataTable>
 		</h:form>
 
