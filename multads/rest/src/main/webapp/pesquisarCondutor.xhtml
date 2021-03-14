@@ -41,7 +41,7 @@
 				<p:column headerText="CPF" filterBy="#{objeto.documento}"
 					filterMatchMode="contains"
 					filterStyle="display:none; visibility:hidden;">
-					<h:outputText value="#{objeto.documento}" />
+					<h:outputText value="#{condutorbean.format('###.###.###-##', objeto.documento, true)}" />
 				</p:column>
 
 				<p:column headerText="Nome" filterBy="#{objeto.nome}"
@@ -58,10 +58,10 @@
 
 				<p:column headerText="Detalhes">
 
-					<h:commandLink immediate="true" action="cadastroPessoa">
+					<h:commandLink immediate="true" action="visualizaCondutor">
 						<h:graphicImage value="images/cnh.png" width="32" height="32" /> 
 						<f:setPropertyActionListener value="#{objeto}"
-							target="#{pessoabean.pessoa}" />
+							target="#{condutorbean.condutor}" />
 					</h:commandLink>
 
 				</p:column>

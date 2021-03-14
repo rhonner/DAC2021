@@ -6,6 +6,7 @@ import java.util.Locale;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.swing.text.MaskFormatter;
 
 import org.primefaces.util.LangUtils;
 
@@ -73,6 +74,21 @@ public class CondutorBean {
 			return Integer.parseInt(string);
 		} catch (NumberFormatException ex) {
 			return 0;
+		}
+	}
+	
+	public String format(String pattern, Object value, boolean suppressZero) {
+		if (!suppressZero || Double.parseDouble(value.toString()) != 0) {
+			MaskFormatter mask;
+			try {
+				mask = new MaskFormatter(pattern);
+				mask.setValueContainsLiteralCharacters(false);
+				return mask.valueToString(value);
+			} catch (Exception e) {
+				throw new RuntimeException(e);
+			}
+		} else {
+			return "";
 		}
 	}
 
