@@ -6,13 +6,15 @@ import javax.ws.rs.client.Invocation.Builder;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
 
+import org.jboss.resteasy.plugins.providers.jackson.ResteasyJackson2Provider;
+
 public class ResponseConfiguration {
 	private String path;
 	private Builder client;
 	
 	public ResponseConfiguration(String endPoint) {
-		path = "http://localhost:8080/tadstrans/webresource" + endPoint;
-		client = ClientBuilder.newClient().target(path).request(MediaType.APPLICATION_JSON);
+		path = "http://localhost:8180/tadstran/webresources" + endPoint;
+		client = ClientBuilder.newClient().register(ResteasyJackson2Provider.class).target(path).request(MediaType.APPLICATION_JSON);
 	}
 	
 	public Builder getClient() {

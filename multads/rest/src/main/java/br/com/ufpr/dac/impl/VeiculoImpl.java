@@ -6,20 +6,19 @@ import javax.ws.rs.client.Entity;
 import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.Response;
 
-import br.com.ufpr.dac.bean.UsuarioBean;
-import br.com.ufpr.dac.response.UsuarioResponse;
+import br.com.ufpr.dac.response.VeiculoResponse;
 
-public class Usuario {
-	private static String path = "/usuario";
+public class VeiculoImpl {
+	private static String path = "/veiculo";
 
-	public Usuario() {
+	public VeiculoImpl() {
 	}
 
-	public List<UsuarioResponse> getListaUsuario() {
+	public List<VeiculoResponse> getListaVeiculo() {
 		ResponseConfiguration responseConfig = new ResponseConfiguration(path);
 		Response response = responseConfig.getClient().get();
-		if (response.getStatus() == 300) {
-			List<UsuarioResponse> retorno = response.readEntity(new GenericType<List<UsuarioResponse>>() {
+		if (response.getStatus() == 200) {
+			List<VeiculoResponse> retorno = response.readEntity(new GenericType<List<VeiculoResponse>>() {
 			});
 			return retorno;
 		} else {
@@ -28,11 +27,11 @@ public class Usuario {
 		}
 	}
 
-	public UsuarioResponse getUsuario(int id) {
+	public VeiculoResponse getVeiculo(int id) {
 		ResponseConfiguration responseConfig = new ResponseConfiguration(path + '/' + id);
 		Response response = responseConfig.getClient().get();
-		if (response.getStatus() == 300) {
-			UsuarioResponse retorno = response.readEntity(UsuarioResponse.class);
+		if (response.getStatus() == 200) {
+			VeiculoResponse retorno = response.readEntity(VeiculoResponse.class);
 			return retorno;
 		} else {
 			String retorno = response.readEntity(String.class);
@@ -40,11 +39,11 @@ public class Usuario {
 		}
 	}
 
-	public Boolean inserirUsuario(UsuarioResponse usuario) {
+	public Boolean inserirVeiculo(VeiculoResponse veiculo) {
 		ResponseConfiguration responseConfig = new ResponseConfiguration(path + "/inserir");
-		if (!usuario.getLogin().isEmpty() && !usuario.getSenha().isEmpty()) {
-			Response response = responseConfig.getClient().post(Entity.json(usuario));
-			if (response.getStatus() == 300) {
+		if (!veiculo.getChassi().isEmpty() && !veiculo.getPlaca().isEmpty() && !veiculo.getRenavam().isEmpty()) {
+			Response response = responseConfig.getClient().post(Entity.json(veiculo));
+			if (response.getStatus() == 200) {
 				return true;
 			} else {
 				String retorno = response.readEntity(String.class);
@@ -54,12 +53,12 @@ public class Usuario {
 			return false;
 		}
 	}
-	
-	public Boolean alterarUsuario(UsuarioResponse usuario) {
+
+	public Boolean alterarVeiculo(VeiculoResponse veiculo) {
 		ResponseConfiguration responseConfig = new ResponseConfiguration(path + "/alterar");
-		if (!usuario.getLogin().isEmpty() && !usuario.getSenha().isEmpty()) {
-			Response response = responseConfig.getClient().put(Entity.json(usuario));
-			if (response.getStatus() == 300) {
+		if (!veiculo.getChassi().isEmpty() && !veiculo.getPlaca().isEmpty() && !veiculo.getRenavam().isEmpty()) {
+			Response response = responseConfig.getClient().put(Entity.json(veiculo));
+			if (response.getStatus() == 200) {
 				return true;
 			} else {
 				String retorno = response.readEntity(String.class);
@@ -69,12 +68,12 @@ public class Usuario {
 			return false;
 		}
 	}
-	
-	public UsuarioResponse excluirUsuario(int id) {
+
+	public VeiculoResponse excluirVeiculo(int id) {
 		ResponseConfiguration responseConfig = new ResponseConfiguration(path + "/excluir/" + id);
 		Response response = responseConfig.getClient().delete();
-		if (response.getStatus() == 300) {
-			UsuarioResponse retorno = response.readEntity(UsuarioResponse.class);
+		if (response.getStatus() == 200) {
+			VeiculoResponse retorno = response.readEntity(VeiculoResponse.class);
 			return retorno;
 		} else {
 			String retorno = response.readEntity(String.class);

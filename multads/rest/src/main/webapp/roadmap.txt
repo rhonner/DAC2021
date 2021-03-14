@@ -102,3 +102,6 @@ V0.0.0.30
 
 v0.0.0.31
 - Alterações na service de multa e criação do consumo da web service de usuario
+
+v0.0.0.32
+- Alterações na response(consumo) de usuario, criação da de pessoa e veiculo e alteração no ResponseConfiguration
