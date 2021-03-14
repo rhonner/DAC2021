@@ -30,7 +30,9 @@
 				<p:message for="senha" display="text" />
 
 				<h:outputText value="Nome" />
-				<p:inputText id="nome" value="#{pessoabean.pessoa.nome}" required="true" requiredMessage="Valor obrigatório."/>
+				<p:inputText id="nome" value="#{pessoabean.pessoa.nome}"  required="true" requiredMessage="Valor obrigatório.">
+					<p:keyFilter regEx="/[a-zA-ZÀ-ú\\s\\' ]+/"/>
+				</p:inputText>
 				<p:message for="nome" display="text" />
 
 

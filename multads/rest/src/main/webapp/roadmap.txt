@@ -105,3 +105,6 @@ v0.0.0.31
 
 v0.0.0.32
 - Alterações na response(consumo) de usuario, criação da de pessoa e veiculo e alteração no ResponseConfiguration
+
+v0.0.0.33
+- Adicionada mascara de R$ no campo de valor, junto com javascript
