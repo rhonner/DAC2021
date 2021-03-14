@@ -1,5 +1,7 @@
 package br.com.ufpr.dac.service;
 
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
@@ -90,5 +92,19 @@ public class PagamentoResource {
 
 	private String JsonInsercaoRealizadaComSucesso() {
 		return "{\"message\" : " + "\"Inserção realizada com sucesso!\"" + " }";
+	}
+
+	private float AjustarValor(Pagamento pagamento) {
+		Period period = Period.between(pagamento.getMulta().getDatamulta().toLocalDateTime().toLocalDate(), LocalDate.now());
+		int meses = period.getMonths();
+		int dias = period.getDays();
+		float valor = pagamento.getValor();
+		if(dias >= 30) {
+			int mesesEmAtraso = dias/30;
+			float jurosMora = (float) (valor * 0.2);
+			float total = valor + jurosMora;
+			valor = (float) (total + (total + (0.1 * mesesEmAtraso)));
+		}
+		return valor;
 	}
 }
