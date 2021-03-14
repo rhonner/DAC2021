@@ -7,6 +7,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.TimeZone;
 
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
@@ -29,8 +30,6 @@ public class MultaBean {
 	private Multa multa = new Multa();
 	private List<Multa> listagem;
 	private List<Multa> filteredMultaList;
-
-	private List<FilterMeta> filterBy;
 
 	public List<Multa> getFilteredMultaList() {
 		return filteredMultaList;
@@ -177,8 +176,6 @@ public class MultaBean {
 		multa = new Multa();
 		setListagem(mdao.getListDesc());
 		listPercent();
-
-//		 filterBy = new ArrayList<>();
 
 	}
 

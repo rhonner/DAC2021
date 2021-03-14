@@ -108,3 +108,6 @@ v0.0.0.32
 
 v0.0.0.33
 - Adicionada mascara de R$ no campo de valor, junto com javascript
+
+v0.0.0.34
+- Data corrigida index Policial
