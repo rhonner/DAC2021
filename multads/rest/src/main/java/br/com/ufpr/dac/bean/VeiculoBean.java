@@ -12,6 +12,7 @@ import org.primefaces.util.LangUtils;
 
 import br.com.ufpr.dac.impl.PessoaImpl;
 import br.com.ufpr.dac.impl.VeiculoImpl;
+import br.com.ufpr.dac.response.PessoaResponse;
 import br.com.ufpr.dac.response.VeiculoResponse;
 
 
@@ -32,7 +33,11 @@ public class VeiculoBean {
 
 	@PostConstruct
 	public void init() {
+		veiculo = new VeiculoResponse();
 		setListagem(emptyList);
+		PessoaImpl pdao = new PessoaImpl();
+		veiculo.setPessoa(pdao.getByRenavam(veiculo.getRenavam()).get(0));
+		
 	}
 	
 	public List<VeiculoResponse> getEmptyList() {
