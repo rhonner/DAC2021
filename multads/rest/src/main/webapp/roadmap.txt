@@ -129,3 +129,6 @@ v0.0.0.39
 
 v0.0.0.40
 - tela de pesquisa de condutor finalizada com máscada d cpf, e tela de detalhes de condutor finalizada
+
+v0.0.0.41
+- metodo para pegar pessoa por renavam do carro criado service e impl

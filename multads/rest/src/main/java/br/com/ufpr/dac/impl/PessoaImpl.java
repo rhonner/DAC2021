@@ -27,6 +27,20 @@ public class PessoaImpl {
 		}
 	}
 
+	public List<PessoaResponse>getByRenavam(String search){
+		ResponseConfiguration responseConfig = new ResponseConfiguration(path + '/' +"personbyrenavam"+'/'+ search);
+		Response response = responseConfig.getClient().get();
+		if (response.getStatus() == 200) {
+			List<PessoaResponse> retorno = response.readEntity(new GenericType<List<PessoaResponse>>() {
+			});
+			return retorno;
+		} else {
+			String retorno = response.readEntity(String.class);
+			return null;
+		}
+	}
+	
+	
 	public List<PessoaResponse> getListaPessoaGenericSearch(String search) {
 		ResponseConfiguration responseConfig = new ResponseConfiguration(path + '/' +"genericSearch"+'/'+ search);
 		Response response = responseConfig.getClient().get();

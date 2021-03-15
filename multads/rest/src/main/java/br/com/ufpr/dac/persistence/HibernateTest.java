@@ -40,19 +40,19 @@ public class HibernateTest {
 		 */
 		
 		
-//		PessoaDao mdao = new PessoaDao();
-//
-//		PessoaImpl p = new PessoaImpl();
-//		List<PessoaResponse> plist = p.getListaPessoaGenericSearch("antelectus");
-//		for (PessoaResponse pessoa : plist) {
-//			System.out.println(pessoa);
-//
-//		}
+		PessoaDao mdao = new PessoaDao();
+
+		PessoaImpl p = new PessoaImpl();
+		List<PessoaResponse> plist = p.getByRenavam("44609582799");
+		for (PessoaResponse pessoa : plist) {
+			System.out.println(pessoa);
+
+		}
 
 
-		VeiculoImpl p = new VeiculoImpl();
-		VeiculoResponse ps = p.getVeiculoByRenavam("44609582799");
-		System.out.println(ps);
+//		VeiculoImpl p = new VeiculoImpl();
+	//	VeiculoResponse ps = p.getVeiculoByRenavam("44609582799");
+	//	System.out.println(ps);
 		
 		/*
 		 * List<Pessoa>plist = mdao.getExemplo("ri"); for (Pessoa pessoa : plist) {
