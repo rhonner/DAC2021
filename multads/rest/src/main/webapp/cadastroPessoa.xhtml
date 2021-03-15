@@ -42,7 +42,7 @@
 
 
 				<h:outputText value="CPF" />
-				<p:inputText id="cpf" value="#{pessoabean.pessoa.documento}" required="true" requiredMessage="Valor obrigatório."/>
+				<p:inputMask id="cpf" value="#{pessoabean.pessoa.documento}" mask="999.999.999-99" required="true" requiredMessage="Valor obrigatório."/>
 				<p:message for="cpf" display="text" />
 
 			</h:panelGrid>

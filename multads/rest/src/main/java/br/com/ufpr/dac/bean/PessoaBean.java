@@ -52,6 +52,7 @@ public class PessoaBean {
 	public void save() {
 		PessoaDao pedao = new PessoaDao();
 		UsuarioDao udao = new UsuarioDao();
+		pessoa.setDocumento(removeMask(pessoa.getDocumento()));
 		if (pessoa.getId() == 0) {
 			udao.inserir(usuario);
 			pessoa.setUsuario(udao.getLast()); //Para salvar no banco, gerar Id e então ser possível gerar a vinculação com pessoa
@@ -105,6 +106,10 @@ public class PessoaBean {
 		pessoa.setUsuario(usuario);
 	}
 
+	public String removeMask(String str) {
+		return str.replaceAll("\\D", "");
+	}
+	
 	public List<Pessoa> listagem() {
 		PessoaDao pedao = new PessoaDao();
 		return pedao.listPolices();

@@ -133,3 +133,5 @@ v0.0.0.40
 v0.0.0.41
 - criacao de telas e beans de veiculos, busca por placa de veiculo, e detalhes do proprietario do veiculo buscado 
 
+v0.0.0.42
+- adicionada mascara d cpf e validacao para n incluir letras no cadastro de policial
