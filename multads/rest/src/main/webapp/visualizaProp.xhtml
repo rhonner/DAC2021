@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:comps="http://java.sun.com/jsf/composite/comps">
+
+<ui:composition template="templates/baseLayout.xhtml">
+
+	<ui:define name="pageTitle">
+		<h2 class="pageT">Dados do Proprietário</h2>
+		<p></p>
+	</ui:define>
+
+	<ui:define name="content">
+
+		<table class="percents vehicle">
+			<tr>
+				<th>CPF</th>
+				<th>Nome</th>
+				<th>E-mail</th>
+			</tr>
+			<tr>
+				<td><h:outputText value="#{veiculobean.veiculo.pessoa.documento}" /></td>
+				<td><h:outputText value="#{veiculobean.veiculo.pessoa.nome}" /></td>
+				<td><h:outputText value="#{veiculobean.veiculo.pessoa.email}" /></td>
+			</tr>
+		</table>
+
+		<p:dataTable style="width: 100%" id="list" var="objeto"
+			value="#{veiculobean.veiculo.pessoa.veiculos}" lazy="true"
+			paginator="true" rows="10"
+			paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+			paginatorPosition="bottom" rowsPerPageTemplate="5,10,15">
+			<f:facet name="header">
+				<h:outputText value="Veículos" />
+			</f:facet>
+
+			<p:column headerText="Renavam">
+				<h:outputText value="#{objeto.renavam}" />
+
+			</p:column>
+
+			<p:column headerText="Chassi">
+				<h:outputText value="#{objeto.chassi}" />
+			</p:column>
+
+			<p:column headerText="Ano de Fabricação">
+				<h:outputText value="#{objeto.anoFabricacao}">
+				</h:outputText>
+			</p:column>
+
+			<p:column headerText="Ano do Modelo">
+				<h:outputText value="#{objeto.anoModelo}">
+				</h:outputText>
+			</p:column>
+
+			<p:column headerText="Carro">
+				<h:outputText value="#{objeto.carro.descricao}">
+				</h:outputText>
+			</p:column>
+
+			<p:column headerText="Cor">
+				<h:outputText value="#{objeto.cor}">
+				</h:outputText>
+			</p:column>
+		</p:dataTable>
+
+	</ui:define>
+
+</ui:composition>
+
+</html>

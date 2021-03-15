@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:comps="http://java.sun.com/jsf/composite/comps">
+
+<ui:composition template="templates/baseLayout.xhtml">
+
+	<ui:define name="pageTitle">
+		<h2 class="pageT">Pesquisa de Veículo</h2>
+		<p></p>
+	</ui:define>
+
+	<ui:define name="content">
+
+		<h:form id="formList">
+			<p />
+			<p:dataTable style="width: 100%" id="list" var="objeto"
+				value="#{veiculobean.listagem}"
+				filteredValue="#{veiculobean.filteredListagem}"
+				widgetVar="veiculoWidget"
+				globalFilterFunction="#{veiculobean.globalFilterFunction}"
+				lazy="false" paginator="true" rows="10"
+				paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+				paginatorPosition="bottom" rowsPerPageTemplate="5,10,15">
+				<f:facet name="header">
+					<h:outputText value="Veículo" />
+					<p:outputPanel>
+						<h:outputText value="Pesquisar:" />
+						<p:remoteCommand name="initializeList"
+							actionListener="#{veiculobean.initializeList}" />
+						<p:inputText id="globalFilter" required="true"
+							onkeyup="if (event.keyCode === 13){ initializeList(); PF('veiculoWidget').filter();}"
+							style="width:150px" placeholder="" />
+					</p:outputPanel>
+				</f:facet>
+
+				<p:column headerText="Renavam" filterBy="#{objeto.renavam}"
+					filterMatchMode="exact"
+					filterStyle="display:none; visibility:hidden;">
+					<h:outputText value="#{objeto.renavam}" />
+				</p:column>
+
+				<p:column headerText="Placa" filterBy="#{objeto.placa}"
+					filterMatchMode="exact"
+					filterStyle="display:none; visibility:hidden;">
+					<h:outputText value="#{objeto.placa}" />
+				</p:column>
+
+				<p:column headerText="Marca"
+					filterBy="#{objeto.carro.marca.descricao}"
+					filterMatchMode="exact"
+					filterStyle="display:none; visibility:hidden;">
+					<h:outputText value="#{objeto.carro.marca.descricao}" />
+				</p:column>
+
+				<p:column headerText="Modelo" filterBy="#{objeto.carro.descricao}"
+					filterMatchMode="exact"
+					filterStyle="display:none; visibility:hidden;">
+					<h:outputText value="#{objeto.carro.descricao}" />
+				</p:column>
+
+				<p:column headerText="Ano de Fabricação"
+					filterBy="#{objeto.anoFabricacao}" filterMatchMode="exact"
+					filterStyle="display:none; visibility:hidden;">
+					<h:outputText value="#{objeto.anoFabricacao}" />
+				</p:column>
+
+				<p:column headerText="Ano Modelo" filterBy="#{objeto.anoModelo}"
+					filterMatchMode="exact"
+					filterStyle="display:none; visibility:hidden;">
+					<h:outputText value="#{objeto.anoModelo}" />
+				</p:column>
+
+				<p:column headerText="Nome do Propretário"
+					filterBy="#{objeto.pessoa.nome}" filterMatchMode="exact"
+					filterStyle="display:none; visibility:hidden;">
+					<h:outputText value="#{objeto.pessoa.nome}" />
+				</p:column>
+
+				<p:column headerText="Detalhes">
+					<h:commandLink immediate="true" action="visualizaProp">
+						<h:graphicImage value="images/profile.png" width="32" height="32" />
+						<f:setPropertyActionListener value="#{objeto}"
+							target="#{veiculobean.veiculo}" />
+					</h:commandLink>
+				</p:column>
+			</p:dataTable>
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>
+
+</html>

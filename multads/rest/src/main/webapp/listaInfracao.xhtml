@@ -22,7 +22,7 @@
 			<h:panelGrid columns="1" border="0">
 				<h:commandLink action="cadastroInfracao"
 					actionListener="#{infracaobean.add}">
-					<h:graphicImage value="images/add.png" width="32" height="32" />
+					<h:graphicImage value="images/locked.png" width="32" height="32" /> Nova Infração
 				</h:commandLink>
 
 
@@ -57,7 +57,7 @@
 				</p:column>
 
 
-				<p:column headerText="Ações">
+				<p:column headerText="Editar ou Excluir">
 
 					<h:commandLink immediate="true"
 						 action="cadastroTipoInfracao">

@@ -11,7 +11,7 @@
 <ui:composition template="templates/baseLayout.xhtml">
 
 	<ui:define name="pageTitle">
-		<h2 class="pageT">Lista de Policiais</h2>
+		<h2 class="pageT">Administração Policial</h2>
 		<p></p>
 	</ui:define>
 
@@ -21,8 +21,22 @@
 
 			<h:panelGrid columns="1" border="0">
 				<h:commandLink action="cadastroPessoa"
-					actionListener="#{pessoabean.add}">
+					actionListener="#{pessoabean.add}"> 
 					<h:graphicImage value="images/addPessoa.png" width="32" height="32" /> Cadastrar Policial
+				</h:commandLink>
+			</h:panelGrid>
+			<div class="line"></div>
+			<h:panelGrid columns="1" border="0">
+				<h:commandLink action="pesquisarCondutor"
+					actionListener="#{condutorbean.add}">
+					<h:graphicImage value="images/profile.png" width="32" height="32" /> Pesquisar Condutor
+				</h:commandLink>
+			</h:panelGrid>
+			<div class="line"></div>
+			<h:panelGrid columns="1" border="0">
+				<h:commandLink action="pesquisarVeiculo"
+					actionListener="#{veiculobean.add}">
+					<h:graphicImage value="images/veiculo.png" width="32" height="32" /> Pesquisar Veículo
 				</h:commandLink>
 			</h:panelGrid>
 
@@ -31,10 +45,9 @@
 				value="#{pessoabean.listagem}" lazy="true" paginator="true"
 				rows="10"
 				paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
-				paginatorPosition="bottom"
-				rowsPerPageTemplate="5,10,15">
+				paginatorPosition="bottom" rowsPerPageTemplate="5,10,15">
 				<f:facet name="header">
-					<h:outputText value="listagem de Policiais" />
+					<h:outputText value="Lista de Policiais" />
 				</f:facet>
 				<p:column headerText="Id">
 					<h:outputText value="#{objeto.id}" />
@@ -45,14 +58,15 @@
 				</p:column>
 
 				<p:column headerText="CPF">
-					<h:outputText value="#{multabean.format('###.###.###-##', objeto.documento, true)}" />
+					<h:outputText
+						value="#{multabean.format('###.###.###-##', objeto.documento, true)}" />
 				</p:column>
 
 				<p:column headerText="Email">
 					<h:outputText value="#{objeto.email}" />
 				</p:column>
 
-				<p:column headerText="Ações">
+				<p:column headerText="Editar ou Excluir">
 
 					<h:commandLink immediate="true" action="cadastroPessoa">
 						<h:graphicImage value="images/edit.png" width="32" height="32" />
