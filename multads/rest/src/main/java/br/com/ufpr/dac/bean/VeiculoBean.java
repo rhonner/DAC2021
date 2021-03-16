@@ -10,17 +10,15 @@ import javax.swing.text.MaskFormatter;
 
 import org.primefaces.util.LangUtils;
 
-import br.com.ufpr.dac.impl.PessoaImpl;
 import br.com.ufpr.dac.impl.VeiculoImpl;
-import br.com.ufpr.dac.response.PessoaResponse;
 import br.com.ufpr.dac.response.VeiculoResponse;
-
 
 @SessionScoped
 @ManagedBean(name = "veiculobean")
 public class VeiculoBean {
-	
+
 	private VeiculoResponse veiculo = new VeiculoResponse();
+	private List<VeiculoResponse> veiculoList;
 	private List<VeiculoResponse> listagem;
 	private List<VeiculoResponse> emptyList;
 	private List<VeiculoResponse> filteredListagem;
@@ -30,41 +28,44 @@ public class VeiculoBean {
 		setListagem(vdao.getListaVeiculo());
 	}
 
-
 	@PostConstruct
 	public void init() {
 		veiculo = new VeiculoResponse();
 		setListagem(emptyList);
-		PessoaImpl pdao = new PessoaImpl();
-		veiculo.setPessoa(pdao.getByRenavam(veiculo.getRenavam()).get(0));
-		
 	}
-	
+
 	public List<VeiculoResponse> getEmptyList() {
 		return emptyList;
 	}
-	
+
 	public void add() {
 		setListagem(emptyList);
 	}
-
 
 	public void setEmptyList(List<VeiculoResponse> emptyList) {
 		this.emptyList = emptyList;
 	}
 
-
-	public void initializeList() {
+	public void initializeList() throws Exception {
 		VeiculoImpl vdao = new VeiculoImpl();
+//		PessoaImpl pdao = new PessoaImpl();
+//		for (VeiculoResponse veiculoResponse : vdao.getListaVeiculo()) {
+//			try {
+//				if (pdao.getByRenavam(veiculoResponse.getRenavam()).size() > 0)
+//					veiculoResponse.setPessoa(pdao.getByRenavam(veiculoResponse.getRenavam()).get(0));
+//			} catch (Exception e) {
+//				throw new Exception(e.getMessage());
+//			}s
+//		}
 		setListagem(vdao.getListaVeiculo());
 	}
-	
+
 	public boolean globalFilterFunction(Object value, Object filter, Locale locale) {
 		String filterText = (filter == null) ? null : filter.toString().trim().toLowerCase();
 		if (LangUtils.isValueBlank(filterText)) {
 			return true;
 		}
-		
+
 		int filterInt = getInteger(filterText);
 
 		VeiculoResponse veiculo = (VeiculoResponse) value;
@@ -78,7 +79,7 @@ public class VeiculoBean {
 			return 0;
 		}
 	}
-	
+
 	public String format(String pattern, Object value, boolean suppressZero) {
 		if (!suppressZero || Double.parseDouble(value.toString()) != 0) {
 			MaskFormatter mask;
@@ -94,7 +95,6 @@ public class VeiculoBean {
 		}
 	}
 
-
 	public VeiculoResponse getVeiculo() {
 		return veiculo;
 	}
@@ -103,21 +103,17 @@ public class VeiculoBean {
 		this.veiculo = veiculo;
 	}
 
-
 	public List<VeiculoResponse> getListagem() {
 		return listagem;
 	}
-
 
 	public void setListagem(List<VeiculoResponse> listagem) {
 		this.listagem = listagem;
 	}
 
-
 	public List<VeiculoResponse> getFilteredListagem() {
 		return filteredListagem;
 	}
-
 
 	public void setFilteredListagem(List<VeiculoResponse> filteredListagem) {
 		this.filteredListagem = filteredListagem;

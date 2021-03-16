@@ -170,7 +170,7 @@ public class MultaBean {
 		multa = new Multa();
 		setListagem(mdao.getListDesc());
 		listPercent();
-
+		
 	}
 
 	public void add() {
