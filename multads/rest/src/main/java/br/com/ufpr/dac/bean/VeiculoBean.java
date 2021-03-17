@@ -10,7 +10,9 @@ import javax.swing.text.MaskFormatter;
 
 import org.primefaces.util.LangUtils;
 
+import br.com.ufpr.dac.impl.PessoaImpl;
 import br.com.ufpr.dac.impl.VeiculoImpl;
+import br.com.ufpr.dac.response.PessoaResponse;
 import br.com.ufpr.dac.response.VeiculoResponse;
 
 @SessionScoped
@@ -57,7 +59,26 @@ public class VeiculoBean {
 //				throw new Exception(e.getMessage());
 //			}s
 //		}
-		setListagem(vdao.getListaVeiculo());
+		
+		PessoaImpl pdao = new PessoaImpl();
+		List<PessoaResponse>pplist = pdao.getListaPessoa();
+		List<VeiculoResponse>vlistvr = vdao.getListaVeiculo();
+		for (VeiculoResponse veiculoResponse : vlistvr) {
+			
+			for(PessoaResponse pr : pplist) {
+				if(pr.getVeiculos().size()>0) {
+					for(int i=0;i<pr.getVeiculos().size();i++) {
+
+						if (pr.getVeiculos().get(i).getRenavam().equals(veiculoResponse.getRenavam())) {
+							veiculoResponse.setPessoa(pr);
+						}
+					}
+				}
+				
+			}
+			
+		}
+		setListagem(vlistvr);
 	}
 
 	public boolean globalFilterFunction(Object value, Object filter, Locale locale) {

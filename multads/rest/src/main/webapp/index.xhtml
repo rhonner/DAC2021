@@ -14,10 +14,10 @@
       <p:outputLabel for="nomeUsuario" value="Nome
       Usuário:" />
       <p:inputText id="nomeUsuario"
-      value="#{loginbean.login}" />
+      value="#{loginbean.usuario.login}" />
 
       <p:outputLabel for="senha" value="Senha:" />
-      <p:password id="senha" value="#{loginbean.senha}" />
+      <p:password id="senha" value="#{loginbean.usuario.senha}" />
 
       <p:commandButton value="Enviar"
       icon="ui-icon-star" action="#{loginbean.logIn()}" ajax="false">

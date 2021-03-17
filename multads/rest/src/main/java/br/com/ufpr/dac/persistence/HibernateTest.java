@@ -39,15 +39,7 @@ public class HibernateTest {
 		 * System.out.println(mudao.getListByDoc("29359062240"));
 		 */
 		
-		
-		PessoaDao mdao = new PessoaDao();
 
-		PessoaImpl p = new PessoaImpl();
-		List<PessoaResponse> plist = p.getByRenavam("44609582799");
-		for (PessoaResponse pessoa : plist) {
-			System.out.println(pessoa);
-
-		}
 
 
 //		VeiculoImpl p = new VeiculoImpl();

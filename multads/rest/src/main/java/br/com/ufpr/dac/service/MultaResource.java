@@ -46,6 +46,19 @@ public class MultaResource {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response getPessoaGeneric(@PathParam("search") String search) {
 		List<Multa> Pessoas = multaDao.getListByRenavam(search);
+		
+		 		
+			return Response.ok(Response.Status.OK).entity(Pessoas).build();
+		
+
+	}
+	
+	@GET
+	@Path("/pessoa/{search}")  
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response getPessoaDoc(@PathParam("search") String search) {
+		List<Multa> Pessoas = multaDao.getListByDoc(search);
 		if(Pessoas.isEmpty()) {
 			return Response.noContent().build();
 		}
